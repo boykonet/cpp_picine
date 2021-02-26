@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: gkarina <gkarina@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/01/22 22:02:38 by gkarina           #+#    #+#              #
-#    Updated: 2021/01/22 22:02:38 by gkarina          ###   ########.fr        #
+#    Created: 2021/02/24 15:03:36 by gkarina           #+#    #+#              #
+#    Updated: 2021/02/24 15:03:36 by gkarina          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = phonebook
 
 FLAGS = -Wall -Wextra -Werror
 
-SRCS =		./megaphone.cpp
+SRCS =			./phonebook.cpp
 
 OBJS = $(SRCS:%.cpp=%.o)
 
