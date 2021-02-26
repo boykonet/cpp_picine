@@ -8,25 +8,27 @@
 
 class Contact
 {
-	public:
-		Contact(Contact &contact, int index);
-		~Contact();
-		
-		std::string		firstName;
-		std::string		lastName;
-		std::string		nickname;
-		std::string		login;
-		std::string		postalAddress;
-		std::string		email;
-		std::string		phoneNumber;
-		std::string		birthdayDate;
-		std::string		favoriteMeal;
-		std::string		underwearColor;
-		std::string		darkestSecret;
+public:
+	Contact();
+	~Contact();
+	std::string		firstName;
+	std::string		lastName;
+	std::string		nickname;
+	std::string		login;
+	std::string		postalAddress;
+	std::string		email;
+	std::string		phoneNumber;
+	std::string		birthdayDate;
+	std::string		favoriteMeal;
+	std::string		underwearColor;
+	std::string		darkestSecret;
 
-		int		index;
+	int		index;
 
-		void	newContact(Contact &contact);
+//	static void	newContact(Contact &contact, const int index);
 };
+
+void 		addList(Contact &contact, const int index);
+void		searchList(Contact (&contacts)[8]);
 
 #endif
