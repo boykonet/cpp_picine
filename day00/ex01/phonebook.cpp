@@ -1,86 +1,69 @@
-#include "./phone.hpp"
+#include "phone.hpp"
 
-void 		printToken(std::string token)
+void					addCmd(Contact &contacts, int &index)
 {
-	if (token.length() <= 10)
-		std::cout << std::setw(10) << token << "|";
+	if (index == 8)
+		std::cout << "\e[1;31mPhonebook is full.\e[0m" << std::endl;
 	else
-		std::cout << token.substr(0, 9) << "." << "|";
-}
-
-void		searchList(Contact (&contacts)[8], const int count)
-{
-	int		i;
-
-	i = 0;
-	while (count > i)
 	{
-		std::cout << std::setw(10) << contacts[i].index << "|";
-		printToken(contacts[i].firstName);
-		printToken(contacts[i].lastName);
-		printToken(contacts[i].nickname);
-		std::cout << std::endl;
-		i++;
+		contacts.addNewContact(index + 1);
+		index++;
 	}
 }
 
-void 		addList(Contact &contact, const int index)
+void 					searchCmd(Contact contacts[8], const int i)
 {
-	contact.index = index;
-	std::cout << "Enter first name: ";
-	std::cin >> contact.firstName;
-	std::cout << "Enter last name: ";
-	std::cin >> contact.lastName;
-	std::cout << "Enter nickname: ";
-	std::cin >> contact.nickname;
-	std::cout << "Enter login: ";
-	std::cin >> contact.login;
-	std::cout << "Enter postal address: ";
-	std::cin >> contact.postalAddress;
-	std::cout << "Enter email address: ";
-	std::cin >> contact.email;
-	std::cout << "Enter phone number: ";
-	std::cin >> contact.phoneNumber;
-	std::cout << "Enter birthday date: ";
-	std::cin >> contact.birthdayDate;
-	std::cout << "Enter favorite meal: ";
-	std::cin >> contact.favoriteMeal;
-	std::cout << "Enter underwear color: ";
-	std::cin >> contact.underwearColor;
-	std::cout << "Enter darkest secret: ";
-	std::cin >> contact.darkestSecret;
+	int 				count;
+	int 				num;
+
+	count = 0;
+	while (count < i)
+		contacts[count++].printList();
+	if (count > 0)
+	{
+		std::cout << "\e[1;32mEnter number of contact:\e[0m ";
+		std::cin >> num;
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+			std::cout << "\e[1;32mThis is not a number.\e[0m" << std::endl;
+		}
+		else if (num > 0 && num < i + 1)
+			contacts[num - 1].printContactData();
+		else
+			std::cout << "\e[1;31mSomething went wrong. "
+				"Try it again.\e[0m" << std::endl;
+	}
+	else
+		std::cout << "\e[1;31mContact list is empty. "
+			   "You must add at least 1 contact.\e[0m" << std::endl;
 }
 
-int			main(void)
+int						main(void)
 {
 	Contact				contacts[8];
 	std::string			str;
-	const std::string	searchToken;
-	const std::string	addToken;
-	const std::string	exitToken;
+	const std::string	searchToken = "SEARCH";
+	const std::string	addToken = "ADD";
+	const std::string	exitToken = "EXIT";
 	int					i;
 
 	i = 0;
-	searchToken = "SEARCH";
-	addToken = "ADD";
-	exitToken = "EXIT";
+	std::cout << "\e[1;33mHello!\e[0m ";
+	std::cout << "\e[1;33mYou can use the next commands: ";
+	std::cout << "ADD, SEARCH and EXIT.\e[0m" << std::endl;
 	while (TRUE)
 	{
-		std::cout << "Enter command: ";
+		std::cout << "\e[1;32mEnter command:\e[0m ";
 		std::cin >> str;
 		if (str == searchToken)
-			searchList(contacts, i);
+			searchCmd(contacts, i);
 		else if (str == addToken)
-		{
-			if (i == 7)
-				std::cout << "Phonebook is full." << std::endl;
-			else
-			{
-				addList(contacts[i], i + 1);
-				i++;
-			}
-		}
+			addCmd(contacts[i], i);
 		else if (str == exitToken)
 			break ;
 	}
+	std::cout << "\e[1;33mBye!\e[0m" << std::endl;
+	return (0);
 }

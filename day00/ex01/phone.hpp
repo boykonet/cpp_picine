@@ -11,6 +11,12 @@ class Contact
 public:
 	Contact();
 	~Contact();
+
+	void			addNewContact(int ind);
+	void			printList();
+	void 			printContactData();
+
+private:
 	std::string		firstName;
 	std::string		lastName;
 	std::string		nickname;
@@ -22,13 +28,7 @@ public:
 	std::string		favoriteMeal;
 	std::string		underwearColor;
 	std::string		darkestSecret;
-
-	int		index;
-
-//	static void	newContact(Contact &contact, const int index);
+	int				index;
 };
-
-void 		addList(Contact &contact, const int index);
-void		searchList(Contact (&contacts)[8]);
 
 #endif
