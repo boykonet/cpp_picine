@@ -31,4 +31,8 @@ private:
 	int				index;
 };
 
+void				addCmd(Contact &contacts, int &index);
+void 				searchCmd(Contact contacts[8], const int i);
+void				printToken(std::string token);
+
 #endif

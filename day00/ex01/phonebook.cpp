@@ -1,4 +1,4 @@
-#include "phone.hpp"
+#include "contact.hpp"
 
 void					addCmd(Contact &contacts, int &index)
 {
@@ -11,42 +11,57 @@ void					addCmd(Contact &contacts, int &index)
 	}
 }
 
-void 					searchCmd(Contact contacts[8], const int i)
+void 					getNum(Contact contacts[8], const int index)
 {
+	std::string 		num;
 	int 				count;
-	int 				num;
+	int 				neg;
+	int 				n;
 
 	count = 0;
-	while (count < i)
+	n = 0;
+	neg = 1;
+	std::cout << "\e[1;32mEnter contact number:\e[0m ";
+	std::getline(std::cin, num);
+	while (num[count] == '-' || num[count] == '+')
+	{
+		if (num[count] == '-')
+			neg = -1;
+		count++;
+	}
+	while (num[count] >= '0' && num[count] <= '9')
+		n = n * 10 + num[count++] - '0';
+	if (num[count])
+		std::cout << "\e[1;31mThis is not a number.\e[0m";
+	else
+	{
+		n = n * neg;
+		if (n > 0 && n < index + 1)
+			contacts[n - 1].printContactData();
+		else
+			std::cout << "\e[1;31mSomething went wrong. Try it again.\e[0m";
+	}
+}
+
+void 					searchCmd(Contact contacts[8], const int index)
+{
+	int 				count;
+
+	count = 0;
+	while (count < index)
 		contacts[count++].printList();
 	if (count > 0)
-	{
-		std::cout << "\e[1;32mEnter number of contact:\e[0m ";
-		std::cin >> num;
-		if (std::cin.fail())
-		{
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-			std::cout << "\e[1;32mThis is not a number.\e[0m" << std::endl;
-		}
-		else if (num > 0 && num < i + 1)
-			contacts[num - 1].printContactData();
-		else
-			std::cout << "\e[1;31mSomething went wrong. "
-				"Try it again.\e[0m" << std::endl;
-	}
+		getNum(contacts, index);
 	else
-		std::cout << "\e[1;31mContact list is empty. "
-			   "You must add at least 1 contact.\e[0m" << std::endl;
+		std::cout << "\e[1;31mContact list is empty. You must add at least 1 contact.\e[0m";
+	std::cin.clear();
+//	std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
 }
 
 int						main(void)
 {
 	Contact				contacts[8];
 	std::string			str;
-	const std::string	searchToken = "SEARCH";
-	const std::string	addToken = "ADD";
-	const std::string	exitToken = "EXIT";
 	int					i;
 
 	i = 0;
@@ -56,12 +71,15 @@ int						main(void)
 	while (TRUE)
 	{
 		std::cout << "\e[1;32mEnter command:\e[0m ";
-		std::cin >> str;
-		if (str == searchToken)
+		std::getline(std::cin, str);
+		if (str == "SEARCH")
+		{
 			searchCmd(contacts, i);
-		else if (str == addToken)
+			std::cout << std::endl;
+		}
+		else if (str == "ADD")
 			addCmd(contacts[i], i);
-		else if (str == exitToken)
+		else if (str == "EXIT")
 			break ;
 	}
 	std::cout << "\e[1;33mBye!\e[0m" << std::endl;

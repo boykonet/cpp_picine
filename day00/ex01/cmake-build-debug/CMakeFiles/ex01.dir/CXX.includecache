@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/Users/gkarina/Desktop/cpp/day00/ex01/phone.hpp
+/Users/boykonet/Desktop/cpp/day00/ex01/contact.hpp
 iostream
 -
 iomanip
 -
 
-/Users/gkarina/Desktop/cpp/day00/ex01/phonebook.cpp
-phone.hpp
-/Users/gkarina/Desktop/cpp/day00/ex01/phone.hpp
+/Users/boykonet/Desktop/cpp/day00/ex01/phonebook.cpp
+contact.hpp
+/Users/boykonet/Desktop/cpp/day00/ex01/contact.hpp
 

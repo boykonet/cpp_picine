@@ -4,10 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/gkarina/Desktop/cpp/day00/ex01/phone.cpp" "/Users/gkarina/Desktop/cpp/day00/ex01/cmake-build-debug/CMakeFiles/ex01.dir/phone.cpp.o"
-  "/Users/gkarina/Desktop/cpp/day00/ex01/phonebook.cpp" "/Users/gkarina/Desktop/cpp/day00/ex01/cmake-build-debug/CMakeFiles/ex01.dir/phonebook.cpp.o"
+  "/Users/boykonet/Desktop/cpp/day00/ex01/add_new_contact.cpp" "/Users/boykonet/Desktop/cpp/day00/ex01/cmake-build-debug/CMakeFiles/ex01.dir/add_new_contact.o"
+  "/Users/boykonet/Desktop/cpp/day00/ex01/contact.cpp" "/Users/boykonet/Desktop/cpp/day00/ex01/cmake-build-debug/CMakeFiles/ex01.dir/contact.o"
+  "/Users/boykonet/Desktop/cpp/day00/ex01/phonebook.cpp" "/Users/boykonet/Desktop/cpp/day00/ex01/cmake-build-debug/CMakeFiles/ex01.dir/phonebook.o"
+  "/Users/boykonet/Desktop/cpp/day00/ex01/print_contact_data.cpp" "/Users/boykonet/Desktop/cpp/day00/ex01/cmake-build-debug/CMakeFiles/ex01.dir/print_contact_data.o"
+  "/Users/boykonet/Desktop/cpp/day00/ex01/print_list.cpp" "/Users/boykonet/Desktop/cpp/day00/ex01/cmake-build-debug/CMakeFiles/ex01.dir/print_list.o"
   )
-set(CMAKE_CXX_COMPILER_ID "AppleClang")
+set(CMAKE_CXX_COMPILER_ID "Clang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

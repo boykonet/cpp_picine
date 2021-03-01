@@ -15,11 +15,14 @@ NAME = phonebook
 FLAGS = -Wall -Wextra -Werror
 
 SRCS =			./phonebook.cpp \
-				./phone.cpp
+				./contact.cpp \
+				./add_new_contact.cpp \
+				./print_contact_data.cpp \
+				./print_list.cpp
 
 OBJS = $(SRCS:%.cpp=%.o)
 
-HEADERS = ./phone.hpp
+HEADERS = ./contact.hpp
 
 INCLUDE = ./
 
