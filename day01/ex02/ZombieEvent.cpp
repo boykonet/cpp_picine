@@ -1,6 +1,6 @@
 #include "ZombieEvent.hpp"
 
-ZombieEvent::ZombieEvent(std::string t, std::string n) : type(t), name(n)
+ZombieEvent::ZombieEvent()
 {
 }
 
@@ -8,20 +8,29 @@ ZombieEvent::~ZombieEvent()
 {
 }
 
-void			setZombieType()
+void			ZombieEvent::setZombieType(std::string type)
 {
-
+	this->type_z = type;
 }
 
-void			ZombieEvent::randomChump()
+Zombie			*ZombieEvent::newZombie(std::string name)
+{
+	Zombie		*zombie = new Zombie(this->type_z, name);
+
+	zombie->announce();
+	return (zombie);
+}
+
+void				ZombieEvent::randomChump()
 {
 	std::string		names[10] = { "Alisa", "Borya", "Dima", \
 								"Eva", "Masha", "katya", \
 								"Valera", "Egor", "Sasha", \
 								"YourName" };
-	ZombieEvent		*zombie = ZombieEvent("Zombie", names[rand()%10]);
-	zombie->announce();
+	Zombie			*zombie1;
+
 	//std::srand(std::time(NULL));
-	//names[rand()%10];
-	delete zombie;
+	zombie1 = this->newZombie(names[std::rand()%10]);
+	delete zombie1;
 }
+

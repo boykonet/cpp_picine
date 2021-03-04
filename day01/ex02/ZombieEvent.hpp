@@ -1,17 +1,19 @@
 #ifndef ZOMBIEEVENT_H
 # define ZOMBIEEVENT_H
 
+# include "Zombie.hpp"
+
 class ZombieEvent
 {
 public:
 	ZombieEvent();
 	~ZombieEvent();
-	static void		setZombieType();
-	void			randomChump();
+	void				setZombieType(std::string type);
+	void				randomChump();
 
 private:
-	std::string		type;
-	std::string		nm;
+	Zombie				*newZombie(std::string name);
+	std::string		type_z;
 };
 
 #endif

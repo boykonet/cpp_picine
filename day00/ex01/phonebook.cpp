@@ -55,7 +55,6 @@ void 					searchCmd(Contact contacts[8], const int index)
 	else
 		std::cout << "\e[1;31mContact list is empty. You must add at least 1 contact.\e[0m";
 	std::cin.clear();
-//	std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
 }
 
 int						main(void)
