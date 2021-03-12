@@ -26,10 +26,9 @@ void				ZombieEvent::randomChump()
 	std::string		names[10] = { "Alisa", "Borya", "Dima", \
 								"Eva", "Masha", "katya", \
 								"Valera", "Egor", "Sasha", \
-								"YourName" };
+								"Elka" };
 	Zombie			*zombie1;
 
-	//std::srand(std::time(NULL));
 	zombie1 = this->newZombie(names[std::rand()%10]);
 	delete zombie1;
 }
