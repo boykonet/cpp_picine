@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/gkarina/Desktop/cpp/day02/ex00/Fixed.class.cpp
+Fixed.class.hpp
+/Users/gkarina/Desktop/cpp/day02/ex00/Fixed.class.hpp
+
+/Users/gkarina/Desktop/cpp/day02/ex00/Fixed.class.hpp
+iostream
+-
+string
+-
+

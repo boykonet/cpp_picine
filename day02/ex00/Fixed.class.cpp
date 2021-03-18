@@ -1,38 +1,33 @@
-#include "Fixed.hpp"
+#include "Fixed.class.hpp"
 
-Fixed::Fixed()
+Fixed::Fixed( void ) : _raw(0)
 {
 	std::cout << "Default constructor called" \
 		<< std::endl;
-	this->_raw = 0;
 }
 
-Fixed::~Fixed()
+Fixed::~Fixed( void )
 {
-	std::cout << "Default destructor called" \
-		<< std::endl;
+	std::cout << "Destructor called" << std::endl;
 }
 
-Fixed			&Fixed::operator=( Fixed const &rhs )
+Fixed::Fixed( Fixed const &a )
 {
-	std::cout << "Assignation operator called" \
-		<< std::endl;
+	std::cout << "Copy constructor called" << std::endl;
 
-	this->_raw = rhs.getRawBits();
+}
 
+Fixed			&Fixed::operator=( Fixed const &a )
+{
+	std::cout << "Assignation operator called" << std::endl;
+	if (this != &a)
+		Fixed( a ).swap(*this);
 	return *this;
-}
-
-Fixed			Fixed::operator+( Fixed const &rhs ) const
-{
-	std::cout << "Assignation operator called" \
-		<< std::endl;
-	
-	return Fixed( this->_raw + rhs.getRawBits() );
 }
 
 int			Fixed::getRawBits( void ) const
 {
+	std::cout << "getRawBits member function called" << std::endl;
 	return this->_raw;
 }
 
@@ -41,8 +36,9 @@ void		Fixed::setRawBits( int const raw )
 	this->_raw = raw;
 }
 
-std::ostream	&operator<<( std::ostream &o, Fixed const &rhs )
+void 		Fixed::swap( Fixed &a )
 {
-	o << rhs.getRawBits();
-	return (o);
+	int const t = this->_raw;
+	this->_raw = a._raw;
+	a._raw = t;
 }

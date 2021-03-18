@@ -7,17 +7,16 @@
 class Fixed
 {
 public:
-	Fixed();
-	~Fixed();
-	Fixed				&operator=( Fixed const &rhs );
-	Fixed				operator+( Fixed const &rhs ) const;
+	Fixed( void );
+	~Fixed( void );
+	Fixed( Fixed const &a );
+	Fixed				&operator=( Fixed const &a );
 	int					getRawBits( void ) const;
 	void				setRawBits( int const raw );
+	void 				swap( Fixed &a );
 private:
 	int					_raw;
-	static const int	_lit;
+	static const int	_lit = 8;
 };
-
-std::ostream			&operator<<( std::ostream &o, Fixed const &rhs );
 
 #endif
