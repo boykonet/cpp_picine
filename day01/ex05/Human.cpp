@@ -2,14 +2,20 @@
 #include "Brain.hpp"
 
 Human::Human()
-{	
+{
+	this->_b = Brain();
 }
 
 Human::~Human()
 {
 }
 
-std::string			Human::identify()
+Brain const			&Human::getBrain() const
 {
-	return this->getBrain.identify();
+	return this->_b;
+}
+
+std::string			Human::identify() const
+{
+	return this->getBrain().identify();
 }

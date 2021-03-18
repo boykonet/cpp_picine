@@ -9,13 +9,14 @@ class Pony
 public:
 	Pony(std::string n, std::string d, std::string y);
 	~Pony();
-	static void		ponyOnTheHeap();
-	static void		ponyOnTheStack();
+	const std::string		&getName() const;
+	const std::string		&getBreed() const;
+	const std::string		&getYearsOld() const;
 
 private:
-	std::string		name;
-	std::string		breed;
-	std::string		yearsOld;
+	std::string				_name;
+	std::string				_breed;
+	std::string				_yearsOld;
 };
 
 #endif

@@ -9,4 +9,7 @@ int				main(void)
 	std::srand(std::time(NULL));
 	event.setZombieType("zombie1");
 	event.randomChump();
+	z = event.newZombie("Klara");
+	z->announce();
+	delete z;
 }

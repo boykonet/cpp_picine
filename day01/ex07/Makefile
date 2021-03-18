@@ -14,25 +14,23 @@ NAME = replace
 
 FLAGS = -Wall -Wextra -Werror
 
-SRCS =				./replaceString.cpp \
-					./openCloseFile.cpp \
-					./err.cpp \
+SRCS =				./File.cpp \
 					./main.cpp
 
-HEADERS = ./file.hpp
+OBJS = $(SRCS:%.cpp=%.o)
+
+HEADERS = ./File.hpp
 
 INCLUDEDIR = ./
-
-OBJS = $(SRCS:%.cpp=%.o)
 
 CC = clang++
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(HEADERS)
-	$(CC) $(FLAGS) -I $(INCLUDEDIR) -o $@ ./main.cpp
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) -I $(INCLUDEDIR) $^ -o $@
 
-%.o: %.c $(HEADERS)
+%.o: %.cpp $(HEADERS)
 	$(CC) $(FLAGS) -I $(INCLUDEDIR) -c $< -o $@
 
 clean:

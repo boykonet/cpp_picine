@@ -10,14 +10,13 @@ ZombieEvent::~ZombieEvent()
 
 void			ZombieEvent::setZombieType(std::string type)
 {
-	this->type_z = type;
+	this->_type_z = type;
 }
 
 Zombie			*ZombieEvent::newZombie(std::string name)
 {
-	Zombie		*zombie = new Zombie(this->type_z, name);
+	Zombie		*zombie = new Zombie(this->_type_z, name);
 
-	zombie->announce();
 	return (zombie);
 }
 
@@ -27,9 +26,10 @@ void				ZombieEvent::randomChump()
 								"Eva", "Masha", "katya", \
 								"Valera", "Egor", "Sasha", \
 								"Elka" };
-	Zombie			*zombie1;
+	Zombie			*zombie;
 
-	zombie1 = this->newZombie(names[std::rand()%10]);
-	delete zombie1;
+	zombie = this->newZombie(names[std::rand()%10]);
+	zombie->announce();
+	delete zombie;
 }
 

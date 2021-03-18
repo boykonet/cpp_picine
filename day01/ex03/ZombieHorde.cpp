@@ -9,19 +9,19 @@ ZombieHorde::ZombieHorde(int N)
 	int				i;
 
 	i = 0;
-	this->zombie = new Zombie[N];
+	this->_zombie = new Zombie[N];
 	while (i < N)
 	{
-		this->zombie[i] = Zombie("zombie", names[rand() % 10]);
+		this->_zombie[i] = Zombie("zombie", names[rand() % 10]);
 		i++;
 	}
 	i = 0;
 	while (i < N)
-		this->zombie[i++].announce();
+		this->_zombie[i++].announce();
 }
 
 ZombieHorde::~ZombieHorde()
 {
 	std::cout << "Zombies are died..." << std::endl;
-	delete [] this->zombie;
+	delete [] this->_zombie;
 }

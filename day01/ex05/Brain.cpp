@@ -2,11 +2,11 @@
 
 Brain::Brain()
 {
-	this->productivity = 100;
-	this->creativity = 100;
+	this->_productivity = 100;
+	this->_creativity = 100;
 }
 
-Brain::Brain(int p, int c) : productivity(p), creativity(c)
+Brain::Brain(int p, int c) : _productivity(p), _creativity(c)
 {
 }
 
@@ -14,12 +14,11 @@ Brain::~Brain()
 {
 }
 
-std::string			Brain::identify()
+std::string			Brain::identify() const
 {
 	std::stringstream	ss;
-	std::string			addr;
 	
+//	ss << "0x" << std::uppercase << std::hex << (const unsigned long int)this;
 	ss << (const void *)this;
-	addr = ss.str();
-	return ("0x" + addr);
+	return (ss.str());
 }

@@ -9,7 +9,7 @@ public:
 	ZombieHorde(int N);
 	~ZombieHorde();
 private:
-	Zombie		*zombie;
+	Zombie		*_zombie;
 };
 
 #endif

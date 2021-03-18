@@ -10,11 +10,11 @@ public:
 	Zombie();
 	Zombie(std::string t, std::string n);
 	~Zombie();
-	void			announce();
+	void			announce() const;
 
 private:
-	std::string		type;
-	std::string		name;
+	std::string		_type;
+	std::string		_name;
 };
 
 #endif

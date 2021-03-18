@@ -8,12 +8,12 @@ class ZombieEvent
 public:
 	ZombieEvent();
 	~ZombieEvent();
+	Zombie				*newZombie(std::string name);
 	void				setZombieType(std::string type);
 	void				randomChump();
 
 private:
-	Zombie				*newZombie(std::string name);
-	std::string		type_z;
+	std::string			_type_z;
 };
 
 #endif

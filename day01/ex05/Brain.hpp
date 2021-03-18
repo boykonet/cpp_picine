@@ -11,10 +11,10 @@ public:
 	Brain();
 	Brain(int p, int c);
 	~Brain();
-	std::string		identify();
+	std::string		identify() const;
 private:
-	int				productivity;
-	int				creativity;
+	int				_productivity;
+	int				_creativity;
 };
 
 #endif

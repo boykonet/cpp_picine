@@ -10,8 +10,10 @@ class Human
 public:
 	Human();
 	~Human();
-	std::string		identify();
-	Brain			getBrain;
+	std::string		identify() const;
+	Brain const		&getBrain() const;
+private:
+	Brain			_b;
 };
 
 #endif
