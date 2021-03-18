@@ -1,0 +1,3 @@
+/Users/gkarina/Desktop/cpp/day02/ex01/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/gkarina/Desktop/cpp/day02/ex01/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/gkarina/Desktop/cpp/day02/ex01/cmake-build-debug/CMakeFiles/ex01.dir
