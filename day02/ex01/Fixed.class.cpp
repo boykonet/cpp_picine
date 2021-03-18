@@ -2,8 +2,18 @@
 
 Fixed::Fixed( void ) : _raw(0)
 {
-	std::cout << "Default constructor called" \
-		<< std::endl;
+	std::cout << "Default constructor called" << std::endl;
+}
+
+Fixed::Fixed( int const a )
+{
+	std::cout << "Default constructor called" << std::endl;
+	this->_raw = a;
+}
+
+Fixed::Fixed( float const a )
+{
+	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::~Fixed( void )
@@ -34,4 +44,9 @@ int			Fixed::getRawBits( void ) const
 void		Fixed::setRawBits( int const raw )
 {
 	this->_raw = raw;
+}
+
+int 		Fixed::toInt( void ) const
+{
+	return roundf(this->);
 }
