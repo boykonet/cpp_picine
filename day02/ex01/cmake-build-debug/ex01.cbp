@@ -80,6 +80,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/gkarina/Desktop/cpp/day02/ex01/Fixed.class.cpp">
+			<Option target="ex01"/>
+		</Unit>
 		<Unit filename="/Users/gkarina/Desktop/cpp/day02/ex01/main.cpp">
 			<Option target="ex01"/>
 		</Unit>

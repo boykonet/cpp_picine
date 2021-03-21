@@ -143,6 +143,33 @@ ex01/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ex01.dir/build.make CMakeFiles/ex01.dir/build
 .PHONY : ex01/fast
 
+Fixed.class.o: Fixed.class.cpp.o
+
+.PHONY : Fixed.class.o
+
+# target to build an object file
+Fixed.class.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ex01.dir/build.make CMakeFiles/ex01.dir/Fixed.class.cpp.o
+.PHONY : Fixed.class.cpp.o
+
+Fixed.class.i: Fixed.class.cpp.i
+
+.PHONY : Fixed.class.i
+
+# target to preprocess a source file
+Fixed.class.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ex01.dir/build.make CMakeFiles/ex01.dir/Fixed.class.cpp.i
+.PHONY : Fixed.class.cpp.i
+
+Fixed.class.s: Fixed.class.cpp.s
+
+.PHONY : Fixed.class.s
+
+# target to generate assembly for a file
+Fixed.class.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ex01.dir/build.make CMakeFiles/ex01.dir/Fixed.class.cpp.s
+.PHONY : Fixed.class.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -179,6 +206,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... ex01"
+	@echo "... Fixed.class.o"
+	@echo "... Fixed.class.i"
+	@echo "... Fixed.class.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

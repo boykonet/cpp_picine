@@ -23,4 +23,6 @@ private:
 	static const int	_lit = 8;
 };
 
+std::ostream 	&operator<<(std::ostream &os, const Fixed &f);
+
 #endif
