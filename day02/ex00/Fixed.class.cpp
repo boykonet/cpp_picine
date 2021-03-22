@@ -2,8 +2,7 @@
 
 Fixed::Fixed( void ) : _raw(0)
 {
-	std::cout << "Default constructor called" \
-		<< std::endl;
+	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::~Fixed( void )
@@ -14,7 +13,7 @@ Fixed::~Fixed( void )
 Fixed::Fixed( Fixed const &a )
 {
 	std::cout << "Copy constructor called" << std::endl;
-	this->_raw = a.getRawBits();
+	*this = a;
 }
 
 Fixed			&Fixed::operator=( Fixed const &a )

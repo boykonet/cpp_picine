@@ -7,19 +7,28 @@ Fixed::Fixed( void ) : _raw(0)
 
 Fixed::Fixed( int const a )
 {
-	long 	num;
+	long	num;
+	int 	r;
 
 	std::cout << "Int constructor called" << std::endl;
 	num = static_cast<long>(a) * static_cast<long>(1 << this->_lit);
-	if (num > INT_MAX || num < INT_MIN)
-		std::cout << "Overflow" << std::endl;
+	r = this->checkMaxMin(num);
+	if (r != 0)
+		num = static_cast<long>(r) * static_cast<long>(1 << this->_lit);
 	this->setRawBits(num);
 }
 
 Fixed::Fixed( float const a )
 {
+	long	num;
+	int 	r;
+
 	std::cout << "Float constructor called" << std::endl;
-	this->setRawBits(static_cast<float>(a) * static_cast<float>(1 << this->_lit));
+	num = static_cast<float>(a) * static_cast<float>(1 << this->_lit);
+	r = this->checkMaxMin(num);
+	if (r != 0)
+		num = static_cast<float>(r) * static_cast<float>(1 << this->_lit);
+	this->setRawBits(num);
 }
 
 Fixed::~Fixed( void )
@@ -43,7 +52,6 @@ Fixed			&Fixed::operator=( Fixed const &a )
 
 int			Fixed::getRawBits( void ) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return this->_raw;
 }
 
@@ -62,7 +70,22 @@ float		Fixed::toFloat( void ) const
 	return (static_cast<float>(this->_raw) / static_cast<float>(1 << this->_lit));
 }
 
-std::ostream 	&operator<<(std::ostream &os, const Fixed &f)
+int			Fixed::checkMaxMin( long const l ) const
+{
+	if (l > std::numeric_limits<int>::max())
+	{
+		std::cout << START << "Overflow: num > " << std::numeric_limits<int>::max() << END << std::endl;
+		return (1);
+	}
+	else if (l < std::numeric_limits<int>::min())
+	{
+		std::cout << START << "Overflow: num < " << std::numeric_limits<int>::min() << END << std::endl;
+		return (-1);
+	}
+	return (0);
+}
+
+std::ostream 	&operator<<( std::ostream &os, Fixed const &f )
 {
 	os << f.toFloat();
 	return (os);
