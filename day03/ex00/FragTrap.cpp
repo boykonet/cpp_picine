@@ -63,20 +63,18 @@ FragTrap		&FragTrap::operator=(FragTrap const &f)
 
 int			FragTrap::rangedAttack(std::string const &target)
 {
-	std::cout << "FR4G-TP " << this->getName() << "attacks " \
-	<< target << "at range, causing " << this->getRangedAttackDamage() \
-	<< "points of damage!" << std::endl;
-	this->_hitPoints += this->_rangedAttackDamage / 4;
-	return this->_rangedAttackDamage;
+	std::cout << "FR4G-TP " << this->getName() << " attacks " \
+	<< target << " at range, causing " << this->getRangedAttackDamage() \
+	<< " points of damage!" << std::endl;
+	return this->getRangedAttackDamage();
 }
 
 int 		FragTrap::meleeAttack(const std::string &target)
 {
-	std::cout << "FR4G-TP " << this->getName() << "attacks " \
-	<< target << "at range, causing " << this->getMeleeAttackDamage() \
-	<< "points of damage!" << std::endl;
-	this->_hitPoints += this->_meleeAttackDamage / 4;
-	return this->_meleeAttackDamage;
+	std::cout << "FR4G-TP " << this->_name << " attacks " \
+	<< target << " at range, causing " << this->getMeleeAttackDamage() \
+	<< " points of damage!" << std::endl;
+	return this->getMeleeAttackDamage();
 }
 
 void			FragTrap::takeDamage(unsigned int amount)

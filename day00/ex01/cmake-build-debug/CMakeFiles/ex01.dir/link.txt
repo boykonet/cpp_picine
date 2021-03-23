@@ -1,1 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/c++  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/ex01.dir/contact.o CMakeFiles/ex01.dir/phonebook.o CMakeFiles/ex01.dir/add_new_contact.o CMakeFiles/ex01.dir/print_contact_data.o CMakeFiles/ex01.dir/print_list.o  -o ex01 
