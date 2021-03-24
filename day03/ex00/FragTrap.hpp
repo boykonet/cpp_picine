@@ -1,10 +1,14 @@
 #ifndef FRAGTRAP_HPP
 # define FRAGTRAP_HPP
 
-# define DEF_CNSTR	"Default constructor called"
+# define START1		"\e[1;36m"
+# define START2		"\e[1;31m"
+# define START3		"\e[1;33m"
+# define END		"\e[0m"
 # define CNSTR		"Constructor called"
 # define DESTR		"Destructor called"
-# define COPY_CNSTR	""
+# define COPY_CNSTR	"Copy constructor called"
+# define ASSIGN		"Assignation operator called"
 
 # include <iostream>
 # include <string>
@@ -12,8 +16,8 @@
 class 	FragTrap
 {
 public:
-	FragTrap(void);
 	FragTrap(std::string name);
+	~FragTrap();
 	FragTrap(FragTrap const &f);
 	FragTrap		&operator=(FragTrap const &f);
 	int 			rangedAttack(std::string const &target);
@@ -30,8 +34,8 @@ public:
 
 private:
 	std::string 		_name;
-	int 				_hitPoints;
-	int 				_energyPoints;
+	unsigned int 		_hitPoints;
+	unsigned int 		_energyPoints;
 	static int const	_maxHitPoints = 100;
 	static int const 	_maxEnergyPoints = 100;
 	static int const 	_level = 1;
