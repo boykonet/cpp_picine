@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string>
+# include "ClapTrap.hpp"
 
 # define RED_OPEN		"\e[1;31m"
 # define GREEN_OPEN		"\e[1;32m"
@@ -13,7 +14,7 @@
 # define COPY_CNSTR_S	"ScavTrap class copy constructor called"
 # define ASSIGN_S		"ScavTrap class assignation operator called"
 
-class ScavTrap
+class ScavTrap : public ClapTrap
 {
 public:
 	ScavTrap(std::string name);

@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string>
+# include "ClapTrap.hpp"
 
 # define RED_OPEN		"\e[1;31m"
 # define GREEN_OPEN		"\e[1;32m"
@@ -13,7 +14,7 @@
 # define COPY_CNSTR_F	"FragTrap class copy constructor called"
 # define ASSIGN_F		"FragTrap class assignation operator called"
 
-class 	FragTrap
+class 	FragTrap : public ClapTrap
 {
 public:
 	FragTrap(std::string name);

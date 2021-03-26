@@ -1,6 +1,6 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(std::string name) : _name(name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name), _name(name)
 {
 	std::cout << CNSTR_F << std::endl;
 	std::cout << "FR4G-TP - [ Guess who? ]" << std::endl;
@@ -15,7 +15,7 @@ FragTrap::~FragTrap()
 			  "Fragtrap. You are a merciless killing machine. Got it? ]" << std::endl;
 }
 
-FragTrap::FragTrap(FragTrap const &f)
+FragTrap::FragTrap(FragTrap const &f) : ClapTrap(f)
 {
 	std::cout << COPY_CNSTR_F << std::endl;
 	*this = f;

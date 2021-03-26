@@ -1,6 +1,6 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name) : _name(name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name), _name(name)
 {
 	std::cout << CNSTR_S << std::endl;
 	std::cout << "SC4V-TP - [ Make my day. ]" << std::endl;
@@ -14,7 +14,7 @@ ScavTrap::~ScavTrap()
 	std::cout << "SC4V-TP " << this->_name << " - [ Crack shot! ]" << std::endl;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &f)
+ScavTrap::ScavTrap(ScavTrap const &f) : ClapTrap(f)
 {
 	std::cout << COPY_CNSTR_S << std::endl;
 	*this = f;

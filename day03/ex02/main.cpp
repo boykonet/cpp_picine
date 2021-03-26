@@ -1,5 +1,6 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
+#include "ClapTrap.hpp"
 #include <time.h>
 
 int			main(void)
