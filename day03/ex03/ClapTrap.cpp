@@ -17,14 +17,12 @@ ClapTrap::~ClapTrap()
 ClapTrap::ClapTrap(ClapTrap const &f)
 {
 	std::cout << COPY_CNSTR_C << std::endl;
-	std::cout << "CL4P-TP - [ Recompiling my combat code! ]" << std::endl;
 	*this = f;
 }
 
 ClapTrap			&ClapTrap::operator=(ClapTrap const &f)
 {
 	std::cout << ASSIGN_C << std::endl;
-	std::cout << "CL4P-TP - [ I am a robot popsicle! ]" << std::endl;
 	if (this != &f)
 	{
 		this->_name = f.getName();
@@ -54,8 +52,8 @@ int 				ClapTrap::meleeAttack(std::string const & target)
 
 void				ClapTrap::takeDamage(unsigned int amount)
 {
-	long 		num;
-	long 		num2;
+	long 			num;
+	long 			num2;
 
 	num = this->_hitPoints;
 	num -= amount - static_cast<unsigned int>(ClapTrap::_armorDamageReduction);
@@ -78,7 +76,7 @@ void				ClapTrap::takeDamage(unsigned int amount)
 
 void 				ClapTrap::beRepaired(unsigned int amount)
 {
-	unsigned int 	num;
+	long 			num;
 	unsigned int 	num2;
 
 	num = this->_energyPoints;
@@ -96,11 +94,6 @@ void 				ClapTrap::beRepaired(unsigned int amount)
 		std::cout << GREEN_OPEN << "SC4V-TP " << this->_name << " got " << num2 << " EP! Great!" << CLOSE << std::endl;
 		std::cout << "SC4V-TP " << this->_name << " - [ Health over here! ]" << std::endl;
 	}
-//	std::cout << "\e[1;32m" << "CL4P-TP " << this->_name << " got " << amount << " energy points! Great!" << CLOSE << std::endl;
-//	this->_energyPoints += amount;
-//	std::cout << "CL4P-TP " << this->_name << " - [ Health over here! ]" << std::endl;
-//	if (this->_energyPoints > ClapTrap::_maxEnergyPoints)
-//		this->_energyPoints = ClapTrap::_maxEnergyPoints;
 }
 
 int 				ClapTrap::getHitPoints() const

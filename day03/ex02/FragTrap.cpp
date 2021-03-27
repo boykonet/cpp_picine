@@ -21,7 +21,7 @@ FragTrap::FragTrap(FragTrap const &f) : ClapTrap(f)
 	*this = f;
 }
 
-FragTrap		&FragTrap::operator=(FragTrap const &f)
+FragTrap			&FragTrap::operator=(FragTrap const &f)
 {
 	std::cout << ASSIGN_F << std::endl;
 	if (this != &f)
@@ -33,7 +33,7 @@ FragTrap		&FragTrap::operator=(FragTrap const &f)
 	return *this;
 }
 
-int			FragTrap::rangedAttack(std::string const &target)
+int					FragTrap::rangedAttack(std::string const &target)
 {
 	std::cout << YELLOW_OPEN << "FR4G-TP " << this->getName() << " attacks " \
 	<< target << " in the ranged attack, causing " << FragTrap::_rangedAttackDamage \
@@ -42,7 +42,7 @@ int			FragTrap::rangedAttack(std::string const &target)
 	return FragTrap::_rangedAttackDamage;
 }
 
-int 		FragTrap::meleeAttack(const std::string &target)
+int 				FragTrap::meleeAttack(const std::string &target)
 {
 	std::cout << YELLOW_OPEN << "FR4G-TP " << this->_name << " attacks " \
 	<< target << " in the melee attack, causing " << FragTrap::_meleeAttackDamage \
@@ -51,10 +51,10 @@ int 		FragTrap::meleeAttack(const std::string &target)
 	return FragTrap::_meleeAttackDamage;
 }
 
-void			FragTrap::takeDamage(unsigned int amount)
+void				FragTrap::takeDamage(unsigned int amount)
 {
-	long 		num;
-	long 		num2;
+	long 			num;
+	long 			num2;
 
 	num = this->_hitPoints;
 	num -= amount - static_cast<unsigned int>(FragTrap::_armorDamageReduction);
@@ -71,12 +71,13 @@ void			FragTrap::takeDamage(unsigned int amount)
 		if (this->_hitPoints < 0)
 			this->_hitPoints = 0;
 		std::cout << RED_OPEN << "FR4G-TP " << this->_name << " lost " << num2 << " HP!" << CLOSE << std::endl;
+		std::cout << "FR4G-TP " << this->_name << " - [ Extra ouch! ]" << std::endl;
 	}
 }
 
-void 			FragTrap::beRepaired(unsigned int amount)
+void 				FragTrap::beRepaired(unsigned int amount)
 {
-	unsigned int 	num;
+	long 			num;
 	unsigned int 	num2;
 
 	num = this->_energyPoints;
@@ -96,7 +97,7 @@ void 			FragTrap::beRepaired(unsigned int amount)
 	}
 }
 
-int 			FragTrap::vaulthunter_dot_exe(std::string const &target)
+int 				FragTrap::vaulthunter_dot_exe(std::string const &target)
 {
 	std::string 	attacks[5] = { "kick", "baton", "chair", "typewriter", "palm" }; // нога, дубина, стул, печатная машинка, ладонь
 	int				energy[5] = { 5, 10, 15, 20, 25 };
@@ -113,22 +114,23 @@ int 			FragTrap::vaulthunter_dot_exe(std::string const &target)
 		i = std::rand()%5;
 		std::cout << GREEN_OPEN << "FR4G-TP " << this->_name << " attacks " << target << " a " << attacks[i] << "! Great! Keep this up!" << CLOSE << std::endl;
 		this->_energyPoints -= energy[4];
+		std::cout << "FR4G-TP " << this->_name << " - [ Freeze! I don't know why I said that. ]" << std::endl;
 		std::cout << GREEN_OPEN << "FR4G-TP " << this->_name << " has " << this->_energyPoints << " energy points!" << CLOSE << std::endl;
 	}
 	return energy[i];
 }
 
-int 			FragTrap::getHitPoints() const
+int 				FragTrap::getHitPoints() const
 {
 	return this->_hitPoints;
 }
 
-int 			FragTrap::getEnergyPoints() const
+int 				FragTrap::getEnergyPoints() const
 {
 	return this->_energyPoints;
 }
 
-std::string 	FragTrap::getName() const
+std::string 		FragTrap::getName() const
 {
 	return this->_name;
 }

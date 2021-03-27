@@ -19,7 +19,7 @@ public:
 	ClapTrap(std::string name);
 	virtual ~ClapTrap();
 	ClapTrap(ClapTrap const &f);
-	virtual ClapTrap		&operator=(ClapTrap const &f);
+	ClapTrap				&operator=(ClapTrap const &f);
 	virtual int 			rangedAttack(std::string const &target);
 	virtual int 			meleeAttack(std::string const & target);
 	virtual void			takeDamage(unsigned int amount);

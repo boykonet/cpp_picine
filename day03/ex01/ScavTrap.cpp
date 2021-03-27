@@ -20,7 +20,7 @@ ScavTrap::ScavTrap(ScavTrap const &f)
 	*this = f;
 }
 
-ScavTrap		&ScavTrap::operator=(ScavTrap const &f)
+ScavTrap			&ScavTrap::operator=(ScavTrap const &f)
 {
 	std::cout << ASSIGN_S << std::endl;
 	if (this != &f)
@@ -32,22 +32,7 @@ ScavTrap		&ScavTrap::operator=(ScavTrap const &f)
 	return *this;
 }
 
-int 			ScavTrap::getHitPoints() const
-{
-	return this->_hitPoints;
-}
-
-int 			ScavTrap::getEnergyPoints() const
-{
-	return this->_energyPoints;
-}
-
-std::string 	ScavTrap::getName() const
-{
-	return this->_name;
-}
-
-int				ScavTrap::rangedAttack(std::string const &target)
+int					ScavTrap::rangedAttack(std::string const &target)
 {
 	std::cout << YELLOW_OPEN << "SC4V-TP " << this->getName() << " attacks " \
 	<< target << " in the ranged attack, causing " << ScavTrap::_rangedAttackDamage \
@@ -56,7 +41,7 @@ int				ScavTrap::rangedAttack(std::string const &target)
 	return ScavTrap::_rangedAttackDamage;
 }
 
-int 			ScavTrap::meleeAttack(const std::string &target)
+int 				ScavTrap::meleeAttack(const std::string &target)
 {
 	std::cout << YELLOW_OPEN << "SC4V-TP " << this->_name << " attacks " \
 	<< target << " in the melee attack, causing " << ScavTrap::_meleeAttackDamage \
@@ -65,10 +50,10 @@ int 			ScavTrap::meleeAttack(const std::string &target)
 	return ScavTrap::_meleeAttackDamage;
 }
 
-void			ScavTrap::takeDamage(unsigned int amount)
+void				ScavTrap::takeDamage(unsigned int amount)
 {
-	long 		num;
-	long 		num2;
+	long 			num;
+	long 			num2;
 
 	num = this->_hitPoints;
 	num -= amount - static_cast<unsigned int>(ScavTrap::_armorDamageReduction);
@@ -85,12 +70,13 @@ void			ScavTrap::takeDamage(unsigned int amount)
 		if (this->_hitPoints < 0)
 			this->_hitPoints = 0;
 		std::cout << RED_OPEN << "SC4V-TP " << this->_name << " lost " << num2 << " HP!" << CLOSE << std::endl;
+		std::cout << "SC4V-TP " << this->_name << " - [ Why do I even feel pain?! ]" << std::endl;
 	}
 }
 
-void 			ScavTrap::beRepaired(unsigned int amount)
+void 				ScavTrap::beRepaired(unsigned int amount)
 {
-	unsigned int 	num;
+	long 			num;
 	unsigned int 	num2;
 
 	num = this->_energyPoints;
@@ -110,17 +96,33 @@ void 			ScavTrap::beRepaired(unsigned int amount)
 	}
 }
 
-int 			ScavTrap::challengeNewcomer()
+int 				ScavTrap::challengeNewcomer()
 {
 	std::string 	challenges[5] = { "raps under your window",
-								"sleeps in class at school",
-								"is also asleep, but already at a meeting of deputies",
-								"accidentally swears on camera",
-								"slammed the door hard and broke the door glass" };
+									"opens the door with his foot, a shoe fell off",
+									"dancing at a party and accidentally fell into the pool",
+									"puts a new door instead of a broken one",
+									"slammed the door hard and broke the door glass" };
 	int				energy[5] = { 5, 10, 15, 20, 25 };
 	int 			i;
 
 	i = std::rand()%5;
+	std::cout << "SC4V-TP " << this->_name << " - [ That was a close one! ]" << std::endl;
 	std::cout << GREEN_OPEN << "SC4V-TP " << this->_name << " " << challenges[i] << "! Great! Keep this up!" << CLOSE << std::endl;
 	return energy[i];
+}
+
+int 				ScavTrap::getHitPoints() const
+{
+	return this->_hitPoints;
+}
+
+int 				ScavTrap::getEnergyPoints() const
+{
+	return this->_energyPoints;
+}
+
+std::string 		ScavTrap::getName() const
+{
+	return this->_name;
 }
