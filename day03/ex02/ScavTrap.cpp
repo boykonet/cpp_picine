@@ -1,11 +1,30 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name), _name(name)
+ScavTrap::ScavTrap()
+{
+	std::cout << CNSTR_D_S << std::endl;
+	this->_hitPoints = 100;
+	this->_energyPoints = 50;
+	this->_maxHitPoints = 100;
+	this->_maxEnergyPoints = 50;
+	this->_level = 1;
+	this->_meleeAttackDamage = 20;
+	this->_rangedAttackDamage = 15;
+	this->_armorDamageReduction = 3;
+}
+
+ScavTrap::ScavTrap(std::string name) : _name(name)
 {
 	std::cout << CNSTR_S << std::endl;
 	std::cout << "SC4V-TP - [ Make my day. ]" << std::endl;
 	this->_hitPoints = 100;
 	this->_energyPoints = 50;
+	this->_maxHitPoints = 100;
+	this->_maxEnergyPoints = 50;
+	this->_level = 1;
+	this->_meleeAttackDamage = 20;
+	this->_rangedAttackDamage = 15;
+	this->_armorDamageReduction = 3;
 }
 
 ScavTrap::~ScavTrap()
@@ -14,7 +33,7 @@ ScavTrap::~ScavTrap()
 	std::cout << "SC4V-TP " << this->_name << " - [ Crack shot! ]" << std::endl;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &f) : ClapTrap(f)
+ScavTrap::ScavTrap(ScavTrap const &f)
 {
 	std::cout << COPY_CNSTR_S << std::endl;
 	*this = f;
@@ -28,26 +47,32 @@ ScavTrap			&ScavTrap::operator=(ScavTrap const &f)
 		this->_name = f.getName();
 		this->_hitPoints = f.getHitPoints();
 		this->_energyPoints = f.getEnergyPoints();
+		this->_maxHitPoints = 100;
+		this->_maxEnergyPoints = 50;
+		this->_level = 1;
+		this->_meleeAttackDamage = 20;
+		this->_rangedAttackDamage = 15;
+		this->_armorDamageReduction = 3;
 	}
 	return *this;
 }
 
-int					ScavTrap::rangedAttack(std::string const &target)
+unsigned int		ScavTrap::rangedAttack(std::string const &target)
 {
 	std::cout << YELLOW_OPEN << "SC4V-TP " << this->getName() << " attacks " \
-	<< target << " in the ranged attack, causing " << ScavTrap::_rangedAttackDamage \
+	<< target << " in the ranged attack, causing " << this->_rangedAttackDamage \
 	<< " points of damage!" << CLOSE << std::endl;
 	std::cout << "SC4V-TP " << this->_name << " - [ Sniped! ]" << std::endl;
-	return ScavTrap::_rangedAttackDamage;
+	return this->_rangedAttackDamage;
 }
 
-int 				ScavTrap::meleeAttack(const std::string &target)
+unsigned int 		ScavTrap::meleeAttack(const std::string &target)
 {
 	std::cout << YELLOW_OPEN << "SC4V-TP " << this->_name << " attacks " \
-	<< target << " in the melee attack, causing " << ScavTrap::_meleeAttackDamage \
+	<< target << " in the melee attack, causing " << this->_meleeAttackDamage \
 	<< " points of damage!" << CLOSE << std::endl;
 	std::cout << "SC4V-TP " << this->_name << " - [ Hit me, baby! ]" << std::endl;
-	return ScavTrap::_meleeAttackDamage;
+	return this->_meleeAttackDamage;
 }
 
 void				ScavTrap::takeDamage(unsigned int amount)
@@ -56,17 +81,17 @@ void				ScavTrap::takeDamage(unsigned int amount)
 	long 			num2;
 
 	num = this->_hitPoints;
-	num -= amount - static_cast<unsigned int>(ScavTrap::_armorDamageReduction);
+	num -= amount - this->_armorDamageReduction;
 	if (num < std::numeric_limits<int>::min())
 		std::cout << RED_OPEN << "Error: overflow: INT_MIN" << CLOSE << std::endl;
 	else
 	{
-		num2 = amount + static_cast<unsigned int>(ScavTrap::_armorDamageReduction);
+		num2 = amount + this->_armorDamageReduction;
 		if (num2 > this->_hitPoints)
 			num2 = this->_hitPoints;
 		else
-			num2 = amount - static_cast<unsigned int>(ScavTrap::_armorDamageReduction);
-		this->_hitPoints -= static_cast<int>(amount) - ScavTrap::_armorDamageReduction;
+			num2 = amount - this->_armorDamageReduction;
+		this->_hitPoints -= static_cast<int>(amount) - static_cast<int>(this->_armorDamageReduction);
 		if (this->_hitPoints < 0)
 			this->_hitPoints = 0;
 		std::cout << RED_OPEN << "SC4V-TP " << this->_name << " lost " << num2 << " HP!" << CLOSE << std::endl;
@@ -85,10 +110,10 @@ void 				ScavTrap::beRepaired(unsigned int amount)
 		std::cout << RED_OPEN << "Error: overflow: INT_MAX" << CLOSE << std::endl;
 	else
 	{
-		num2 = ScavTrap::_maxEnergyPoints - this->_energyPoints;
+		num2 = this->_maxEnergyPoints - this->_energyPoints;
 		this->_energyPoints += static_cast<int>(amount);
-		if (this->_energyPoints > ScavTrap::_maxEnergyPoints)
-			this->_energyPoints = ScavTrap::_maxEnergyPoints;
+		if (this->_energyPoints > static_cast<int>(this->_maxEnergyPoints))
+			this->_energyPoints = static_cast<int>(this->_maxEnergyPoints);
 		if (num2 > amount)
 			num2 = amount;
 		std::cout << GREEN_OPEN << "SC4V-TP " << this->_name << " got " << num2 << " EP! Great!" << CLOSE << std::endl;

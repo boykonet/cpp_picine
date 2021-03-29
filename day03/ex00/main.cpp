@@ -4,11 +4,11 @@
 
 int			main(void)
 {
-	FragTrap	a = FragTrap("Alice");
-	FragTrap	b( a );
-	FragTrap	c = FragTrap("Fedor");
-	std::string end = "\e[0m";
-	int 		hp;
+	FragTrap		a = FragTrap("Alice");
+	FragTrap		b( a );
+	FragTrap		c = FragTrap("Fedor");
+	std::string 	end = "\e[0m";
+	unsigned int 	hp;
 
 	std::cout << std::endl;
 	std::srand(std::time(NULL));
