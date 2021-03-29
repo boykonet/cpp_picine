@@ -16,6 +16,7 @@
 class	ClapTrap
 {
 public:
+	ClapTrap();
 	ClapTrap(std::string name);
 	virtual ~ClapTrap();
 	ClapTrap(ClapTrap const &f);

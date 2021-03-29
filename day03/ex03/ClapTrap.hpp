@@ -20,13 +20,13 @@ public:
 	virtual ~ClapTrap();
 	ClapTrap(ClapTrap const &f);
 	ClapTrap				&operator=(ClapTrap const &f);
-	virtual int 			rangedAttack(std::string const &target);
-	virtual int 			meleeAttack(std::string const & target);
-	virtual void			takeDamage(unsigned int amount);
-	virtual void 			beRepaired(unsigned int amount);
-	virtual int 			getHitPoints() const;
-	virtual int 			getEnergyPoints() const;
-	virtual std::string		getName() const;
+	int 					rangedAttack(std::string const &target);
+	int 					meleeAttack(std::string const & target);
+	void					takeDamage(unsigned int amount);
+	void 					beRepaired(unsigned int amount);
+	int 					getHitPoints() const;
+	int 					getEnergyPoints() const;
+	std::string				getName() const;
 private:
 	std::string				_name;
 	int						_hitPoints;
