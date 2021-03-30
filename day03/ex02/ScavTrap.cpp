@@ -1,8 +1,9 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap()
+ScavTrap::ScavTrap() : ClapTrap()
 {
 	std::cout << CNSTR_D_S << std::endl;
+	this->_type = "SC4V-TP";
 	this->_hitPoints = 100;
 	this->_energyPoints = 50;
 	this->_maxHitPoints = 100;
@@ -13,10 +14,10 @@ ScavTrap::ScavTrap()
 	this->_armorDamageReduction = 3;
 }
 
-ScavTrap::ScavTrap(std::string name) : _name(name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name), _name(name)
 {
 	std::cout << CNSTR_S << std::endl;
-	std::cout << "SC4V-TP - [ Make my day. ]" << std::endl;
+	this->_type = "SC4V-TP";
 	this->_hitPoints = 100;
 	this->_energyPoints = 50;
 	this->_maxHitPoints = 100;
@@ -25,15 +26,16 @@ ScavTrap::ScavTrap(std::string name) : _name(name)
 	this->_meleeAttackDamage = 20;
 	this->_rangedAttackDamage = 15;
 	this->_armorDamageReduction = 3;
+	std::cout << this->_type << " - [ Make my day. ]" << std::endl;
 }
 
 ScavTrap::~ScavTrap()
 {
 	std::cout << DESTR_S << std::endl;
-	std::cout << "SC4V-TP " << this->_name << " - [ Crack shot! ]" << std::endl;
+	std::cout << this->_type << " " << this->_name << " - [ Crack shot! ]" << std::endl;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &f)
+ScavTrap::ScavTrap(ScavTrap const &f) : ClapTrap(f)
 {
 	std::cout << COPY_CNSTR_S << std::endl;
 	*this = f;
@@ -45,6 +47,7 @@ ScavTrap			&ScavTrap::operator=(ScavTrap const &f)
 	if (this != &f)
 	{
 		this->_name = f.getName();
+		this->_type = f.getType();
 		this->_hitPoints = f.getHitPoints();
 		this->_energyPoints = f.getEnergyPoints();
 		this->_maxHitPoints = 100;
@@ -59,19 +62,19 @@ ScavTrap			&ScavTrap::operator=(ScavTrap const &f)
 
 unsigned int		ScavTrap::rangedAttack(std::string const &target)
 {
-	std::cout << YELLOW_OPEN << "SC4V-TP " << this->getName() << " attacks " \
+	std::cout << YELLOW_OPEN << this->_type << " " << this->getName() << " attacks " \
 	<< target << " in the ranged attack, causing " << this->_rangedAttackDamage \
 	<< " points of damage!" << CLOSE << std::endl;
-	std::cout << "SC4V-TP " << this->_name << " - [ Sniped! ]" << std::endl;
+	std::cout << this->_type << " " << this->_name << " - [ Sniped! ]" << std::endl;
 	return this->_rangedAttackDamage;
 }
 
 unsigned int 		ScavTrap::meleeAttack(const std::string &target)
 {
-	std::cout << YELLOW_OPEN << "SC4V-TP " << this->_name << " attacks " \
+	std::cout << YELLOW_OPEN << this->_type << " " << this->_name << " attacks " \
 	<< target << " in the melee attack, causing " << this->_meleeAttackDamage \
 	<< " points of damage!" << CLOSE << std::endl;
-	std::cout << "SC4V-TP " << this->_name << " - [ Hit me, baby! ]" << std::endl;
+	std::cout << this->_type << " " << this->_name << " - [ Hit me, baby! ]" << std::endl;
 	return this->_meleeAttackDamage;
 }
 
@@ -94,8 +97,8 @@ void				ScavTrap::takeDamage(unsigned int amount)
 		this->_hitPoints -= static_cast<int>(amount) - static_cast<int>(this->_armorDamageReduction);
 		if (this->_hitPoints < 0)
 			this->_hitPoints = 0;
-		std::cout << RED_OPEN << "SC4V-TP " << this->_name << " lost " << num2 << " HP!" << CLOSE << std::endl;
-		std::cout << "SC4V-TP " << this->_name << " - [ Why do I even feel pain?! ]" << std::endl;
+		std::cout << RED_OPEN << this->_type << " " << this->_name << " lost " << num2 << " HP!" << CLOSE << std::endl;
+		std::cout << this->_type << " " << this->_name << " - [ Why do I even feel pain?! ]" << std::endl;
 	}
 }
 
@@ -116,8 +119,8 @@ void 				ScavTrap::beRepaired(unsigned int amount)
 			this->_energyPoints = static_cast<int>(this->_maxEnergyPoints);
 		if (num2 > amount)
 			num2 = amount;
-		std::cout << GREEN_OPEN << "SC4V-TP " << this->_name << " got " << num2 << " EP! Great!" << CLOSE << std::endl;
-		std::cout << "SC4V-TP " << this->_name << " - [ Why do I feel radioactive!? ]" << std::endl;
+		std::cout << GREEN_OPEN << this->_type << " " << this->_name << " got " << num2 << " EP! Great!" << CLOSE << std::endl;
+		std::cout << this->_type << " " << this->_name << " - [ Why do I feel radioactive!? ]" << std::endl;
 	}
 }
 
@@ -132,8 +135,8 @@ int 				ScavTrap::challengeNewcomer()
 	int 			i;
 
 	i = std::rand()%5;
-	std::cout << "SC4V-TP " << this->_name << " - [ That was a close one! ]" << std::endl;
-	std::cout << GREEN_OPEN << "SC4V-TP " << this->_name << " " << challenges[i] << "! Great! Keep this up!" << CLOSE << std::endl;
+	std::cout << this->_type << " " << this->_name << " - [ That was a close one! ]" << std::endl;
+	std::cout << GREEN_OPEN << this->_type << " " << this->_name << " " << challenges[i] << "! Great! Keep this up!" << CLOSE << std::endl;
 	return energy[i];
 }
 
@@ -150,4 +153,9 @@ int 				ScavTrap::getEnergyPoints() const
 std::string 		ScavTrap::getName() const
 {
 	return this->_name;
+}
+
+std::string 		ScavTrap::getType() const
+{
+	return this->_type;
 }

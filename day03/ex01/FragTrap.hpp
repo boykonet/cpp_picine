@@ -30,9 +30,11 @@ public:
 	int 				getHitPoints() const;
 	int 				getEnergyPoints() const;
 	std::string			getName() const;
+	std::string 		getType() const;
 
 private:
 	std::string 		_name;
+	std::string 		_type;
 	int					_hitPoints;
 	int					_energyPoints;
 	unsigned int		_maxHitPoints;

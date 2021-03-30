@@ -7,11 +7,12 @@
 
 int			main(void)
 {
-	SuperTrap	a = SuperTrap("Superman");
-	ScavTrap	s = ScavTrap("Ironman");
+	SuperTrap	super = SuperTrap("SUPERTRAP");
+	SuperTrap	ss( super );
+	ScavTrap	scav = ScavTrap("SCAVTRAP");
 
-	a.ninjaShoebox();
+	super.ninjaShoebox(scav);
 	std::cout << std::endl;
-	a.vaulthunter_dot_exe(s.getName());
+	super.vaulthunter_dot_exe(scav.getName());
 	return 0;
 }

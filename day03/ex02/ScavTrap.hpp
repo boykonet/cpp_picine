@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string>
+# include "ClapTrap.hpp"
 
 # define RED_OPEN		"\e[1;31m"
 # define GREEN_OPEN		"\e[1;32m"
@@ -14,7 +15,7 @@
 # define COPY_CNSTR_S	"ScavTrap class copy constructor called"
 # define ASSIGN_S		"ScavTrap class assignation operator called"
 
-class ScavTrap
+class ScavTrap : public ClapTrap
 {
 public:
 	ScavTrap();
@@ -30,16 +31,10 @@ public:
 	int 				getHitPoints() const;
 	int 				getEnergyPoints() const;
 	std::string			getName() const;
+	std::string 		getType() const;
 private:
 	std::string			_name;
-	int					_hitPoints;
-	int					_energyPoints;
-	unsigned int		_maxHitPoints;
-	unsigned int		_maxEnergyPoints;
-	unsigned int		_level;
-	unsigned int		_meleeAttackDamage;
-	unsigned int		_rangedAttackDamage;
-	unsigned int		_armorDamageReduction;
+	std::string 		_type;
 };
 
 #endif

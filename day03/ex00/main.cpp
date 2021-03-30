@@ -57,8 +57,8 @@ int			main(void)
 		std::cout << std::endl;
 	}
 
-	std::cout << b.getName() << " has " << b.getHitPoints() << " HP!" << std::endl;
+	std::cout << b.getType() << " " << b.getName() << " has " << b.getHitPoints() << " HP!" << std::endl;
 	b = c;
-	std::cout << b.getName() << " has " << b.getHitPoints() << " HP!" << std::endl;
+	std::cout << b.getType() << " " << b.getName() << " has " << b.getHitPoints() << " HP!" << std::endl;
 	return 0;
 }

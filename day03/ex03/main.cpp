@@ -6,100 +6,147 @@
 
 int			main(void)
 {
-	FragTrap	a = FragTrap("Alice");
-	ScavTrap	b = ScavTrap("Fedor");
-	NinjaTrap	n = NinjaTrap("Feixua");
-	NinjaTrap	nn( n );
-	std::string end = "\e[0m";
-	int 		hp;
+	ClapTrap		clap = ClapTrap("CLAP");
+	FragTrap		frag = FragTrap("FRAG");
+	ScavTrap		scav = ScavTrap("SCAV");
+	NinjaTrap		ninja = NinjaTrap("NINJA");
+	NinjaTrap		nn( ninja );
+	std::string 	end = "\e[0m";
+	unsigned int 	hp;
 
 	std::cout << std::endl;
 	std::srand(std::time(NULL));
 	for (int i = 0; i < 30; i++)
 	{
 		std::cout << "\e[1;4;35m" << i << " rouuuuuuuund (GOOOONG)" << end << std::endl;
-		if (i == 5 || i == 7)
+		if (i == 0 || i == 4 || i == 8)
 		{
-			if (i == 5)
+			if (i == 0)
 			{
-				hp = a.meleeAttack(b.getName());
-				b.takeDamage(hp);
-				a.beRepaired(5);
-			}
-			else
-			{
-				hp = n.meleeAttack(b.getName());
-				b.takeDamage(hp);
-				n.beRepaired(5);
-			}
-		}
-		else if (i == 0 || i == 3 || i == 6)
-		{
-			if (i == 6)
-			{
-				hp = a.vaulthunter_dot_exe(b.getName());
+				hp = ninja.ninjaShoebox(clap);
 				if (hp > 0)
-					b.takeDamage(hp);
-			}
-			else if (i == 3)
-			{
-				hp = b.challengeNewcomer();
-				b.beRepaired(hp);
+					clap.takeDamage(hp);
 			}
 			else
 			{
-				hp = n.ninjaShoebox();
-				n.beRepaired(hp);
+				if (i == 4)
+				{
+					hp = ninja.rangedAttack(clap.getName());
+					clap.takeDamage(hp);
+					ninja.beRepaired(5);
+				}
+				else
+				{
+					hp = ninja.meleeAttack(clap.getName());
+					clap.takeDamage(hp);
+					ninja.beRepaired(5);
+				}
 			}
 		}
-		else if (i == 1 || i == 2)
+		else if (i == 1 || i == 5 || i == 9)
 		{
 			if (i == 1)
-				hp = b.meleeAttack(a.getName());
-			else
-				hp = b.rangedAttack(a.getName());
-			a.takeDamage(hp);
-			b.beRepaired(5);
-		}
-		else
-		{
-			if (i == 4 || i == 6)
 			{
-				hp = n.meleeAttack(a.getName());
-				a.takeDamage(hp);
-				n.beRepaired(5);
+				hp = ninja.ninjaShoebox(frag);
+				if (hp > 0)
+					frag.takeDamage(hp);
 			}
 			else
 			{
-				hp = n.rangedAttack(b.getName());
-				b.takeDamage(hp);
-				n.beRepaired(5);
+				if (i == 5)
+				{
+					hp = ninja.rangedAttack(frag.getName());
+					frag.takeDamage(hp);
+					ninja.beRepaired(5);
+				}
+				else
+				{
+					hp = ninja.meleeAttack(frag.getName());
+					frag.takeDamage(hp);
+					ninja.beRepaired(5);
+				}
 			}
 		}
-		std::cout << "\e[4;39m" << a.getName() << " has " << a.getHitPoints() << " HP and " << b.getName() << " - " << b.getHitPoints() << " HP!" << end << std::endl;
-		std::cout << "\e[4;39m" << n.getName() << " has " << n.getHitPoints() << " HP!" << std::endl;
-		std::cout << "\e[4;39m" << a.getName() << " has " << a.getEnergyPoints() << " energy points and " << b.getName() << " - " << b.getEnergyPoints() << " energy points!" << end << std::endl;
-		std::cout << "\e[4;39m" << n.getName() << " has " << n.getEnergyPoints() << " energy points!" << std::endl;
-		if (!a.getHitPoints())
+		else if (i == 2 || i == 6 || i == 10)
 		{
-			std::cout << "\e[1;31m" << b.getName() << " died..." << end << std::endl;
+			if (i == 2)
+			{
+				hp = ninja.ninjaShoebox(scav);
+				if (hp > 0)
+					scav.takeDamage(hp);
+			}
+			else
+			{
+				if (i == 6)
+				{
+					hp = ninja.rangedAttack(scav.getName());
+					scav.takeDamage(hp);
+					ninja.beRepaired(5);
+				}
+				else
+				{
+					hp = ninja.meleeAttack(scav.getName());
+					scav.takeDamage(hp);
+					ninja.beRepaired(5);
+				}
+			}
+		}
+		else if (i == 3 || i == 7 || i == 11)
+		{
+			if (i == 3)
+			{
+				hp = ninja.ninjaShoebox(nn);
+				if (hp > 0)
+					nn.takeDamage(hp);
+			}
+			else
+			{
+				if (i == 7)
+				{
+					hp = ninja.rangedAttack(nn.getName());
+					nn.takeDamage(hp);
+					ninja.beRepaired(5);
+				}
+				else
+				{
+					hp = ninja.meleeAttack(nn.getName());
+					nn.takeDamage(hp);
+					ninja.beRepaired(5);
+				}
+			}
+		}
+		std::cout << "\e[4;39m" << clap.getType() << " " << clap.getName() << " has " << clap.getHitPoints() << " HP, " \
+		<< frag.getType() << " " << frag.getName() << " - " << frag.getHitPoints() << " HP, " \
+		<< scav.getType() << " " << scav.getName() << " has " << scav.getHitPoints() << " HP and " \
+		<< nn.getType() << " " << nn.getName() << " has " << nn.getHitPoints() << " HP!" << end << std::endl;
+		std::cout << "\e[4;39m" << clap.getType() << " " << clap.getName() << " has " << clap.getEnergyPoints() << " EP, " \
+		<< frag.getType() << " " << frag.getName() << " - " << frag.getEnergyPoints() << " EP, " \
+		<< scav.getType() << " " << scav.getName() << " has " << scav.getEnergyPoints() << " EP and " \
+		<< nn.getType() << " " << nn.getName() << " has " << nn.getEnergyPoints() << " EP!" << end << std::endl;
+		if (!clap.getHitPoints())
+		{
+			std::cout << "\e[1;31m" << clap.getName() << " died..." << end << std::endl;
 			break ;
 		}
-		else if (!b.getHitPoints())
+		else if (!frag.getHitPoints())
 		{
-			std::cout << "\e[1;31m" << a.getName() << " died..." << end << std::endl;
+			std::cout << "\e[1;31m" << frag.getName() << " died..." << end << std::endl;
 			break ;
 		}
-		else if (!n.getHitPoints())
+		else if (!scav.getHitPoints())
 		{
-			std::cout << "\e[1;31m" << n.getName() << " died..." << end << std::endl;
+			std::cout << "\e[1;31m" << scav.getName() << " died..." << end << std::endl;
+			break ;
+		}
+		else if (!nn.getHitPoints())
+		{
+			std::cout << "\e[1;31m" << nn.getName() << " died..." << end << std::endl;
 			break ;
 		}
 		std::cout << std::endl;
 	}
-
 	std::cout << nn.getName() << " has " << nn.getHitPoints() << " HP!" << std::endl;
-	nn = n;
+	nn = ninja;
 	std::cout << nn.getName() << " has " << nn.getHitPoints() << " HP!" << std::endl;
 	return 0;
 }
