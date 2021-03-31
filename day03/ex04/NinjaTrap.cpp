@@ -26,13 +26,15 @@ NinjaTrap::NinjaTrap(std::string name) : ClapTrap(name), _name(name)
 	this->_meleeAttackDamage = 60;
 	this->_rangedAttackDamage = 5;
 	this->_armorDamageReduction = 0;
-	std::cout << this->_type << " - [ Why did they build me out of galvanized flesh?! ]" << std::endl;
+	std::cout << this->_type \
+	<< " - [ Why did they build me out of galvanized flesh?! ]" << std::endl;
 }
 
 NinjaTrap::~NinjaTrap()
 {
 	std::cout << DESTR_N << std::endl;
-	std::cout << this->_type << " " << this->_name << " - [ Take these, gorgeous, you'll feel better! ]" << std::endl;
+	std::cout << this->_type << " " << this->_name \
+	<< " - [ Take these, gorgeous, you'll feel better! ]" << std::endl;
 }
 
 NinjaTrap::NinjaTrap(NinjaTrap const &f) : ClapTrap(f)
@@ -97,8 +99,10 @@ void				NinjaTrap::takeDamage(unsigned int amount)
 		this->_hitPoints -= static_cast<int>(amount) - static_cast<int>(this->_armorDamageReduction);
 		if (this->_hitPoints < 0)
 			this->_hitPoints = 0;
-		std::cout << RED_OPEN << this->_type << " " << this->_name << " lost " << num2 << " HP!" << CLOSE << std::endl;
-		std::cout << this->_type << " " << this->_name << " - [ My robotic flesh! AAHH! ]" << std::endl;
+		std::cout << RED_OPEN << this->_type << " " << this->_name \
+		<< " lost " << num2 << " HP!" << CLOSE << std::endl;
+		std::cout << this->_type << " " << this->_name \
+		<< " - [ My robotic flesh! AAHH! ]" << std::endl;
 	}
 }
 
@@ -119,7 +123,8 @@ void 				NinjaTrap::beRepaired(unsigned int amount)
 			this->_energyPoints = static_cast<int>(this->_maxEnergyPoints);
 		if (num2 > amount)
 			num2 = amount;
-		std::cout << GREEN_OPEN << this->_type << " " << this->_name << " got " << num2 << " EP! Great!" << CLOSE << std::endl;
+		std::cout << GREEN_OPEN << this->_type << " " << this->_name << " got " \
+		<< num2 << " EP! Great!" << CLOSE << std::endl;
 		std::cout << this->_type << " " << this->_name << " - [ Healsies! ]" << std::endl;
 	}
 }
@@ -135,15 +140,18 @@ unsigned int 		NinjaTrap::ninjaShoebox(ClapTrap const &f)
 	int 			i;
 
 	i = std::rand()%5;
-	if (this->_energyPoints > i)
+	if (this->_energyPoints > energy[i])
 	{
-		std::cout << this->_type << " " << this->_name << " attacks " << f.getType() << " " << f.getName() << " - [ Ratattattattatta! Powpowpowpow! Powpowpowpow! Pew-pew, pew-pew-pewpew! ]" << std::endl;
-		std::cout << GREEN_OPEN << this->_type << " " << this->_name << " " << challenges[i] << "! Great! Keep this up!" << CLOSE << std::endl;
+		std::cout << this->_type << " " << this->_name << " attacks " << f.getType() << " " << f.getName() \
+		<< " - [ Ratattattattatta! Powpowpowpow! Powpowpowpow! Pew-pew, pew-pew-pewpew! ]" << std::endl;
+		std::cout << GREEN_OPEN << this->_type << " " << this->_name << " " << challenges[i] \
+		<< "! Great! Keep this up!" << CLOSE << std::endl;
 		this->_energyPoints -= energy[i];
 	}
 	else
 	{
-		std::cout << YELLOW_OPEN << this->_type << " " << this->_name << " - khm... You don't have energy, sorryyyyyyyyyy:(" << CLOSE << std::endl;
+		std::cout << YELLOW_OPEN << this->_type << " " << this->_name \
+		<< " - khm... You don't have energy, sorryyyyyyyyyy:(" << CLOSE << std::endl;
 		return (0);
 	}
 	return energy[i];
@@ -160,15 +168,18 @@ unsigned int 		NinjaTrap::ninjaShoebox(FragTrap const &f)
 	int 			i;
 
 	i = std::rand()%5;
-	if (this->_energyPoints > i)
+	if (this->_energyPoints > energy[i])
 	{
-		std::cout << this->_type << " " << this->_name << " attacks " << f.getType() << " " << f.getName() << " - [ Ratattattattatta! Powpowpowpow! Powpowpowpow! Pew-pew, pew-pew-pewpew! ]" << std::endl;
-		std::cout << GREEN_OPEN << this->_type << " " << this->_name << " " << challenges[i] << "! Great! Keep this up!" << CLOSE << std::endl;
+		std::cout << this->_type << " " << this->_name << " attacks " << f.getType() << " " << f.getName() \
+		<< " - [ Ratattattattatta! Powpowpowpow! Powpowpowpow! Pew-pew, pew-pew-pewpew! ]" << std::endl;
+		std::cout << GREEN_OPEN << this->_type << " " << this->_name << " " << challenges[i] \
+		<< "! Great! Keep this up!" << CLOSE << std::endl;
 		this->_energyPoints -= energy[i];
 	}
 	else
 	{
-		std::cout << YELLOW_OPEN << this->_type << " " << this->_name << " - khm... You don't have energy, sorryyyyyyyyyy:(" << CLOSE << std::endl;
+		std::cout << YELLOW_OPEN << this->_type << " " << this->_name \
+		<< " - khm... You don't have energy, sorryyyyyyyyyy:(" << CLOSE << std::endl;
 		return (0);
 	}
 	return energy[i];
@@ -185,15 +196,18 @@ unsigned int 		NinjaTrap::ninjaShoebox(ScavTrap const &f)
 	int 			i;
 
 	i = std::rand()%5;
-	if (this->_energyPoints > i)
+	if (this->_energyPoints > energy[i])
 	{
-		std::cout << this->_type << " " << this->_name << " attacks " << f.getType() << " " << f.getName() << " - [ Ratattattattatta! Powpowpowpow! Powpowpowpow! Pew-pew, pew-pew-pewpew! ]" << std::endl;
-		std::cout << GREEN_OPEN << this->_type << " " << this->_name << " " << challenges[i] << "! Great! Keep this up!" << CLOSE << std::endl;
+		std::cout << this->_type << " " << this->_name << " attacks " << f.getType() << " " << f.getName() \
+		<< " - [ Ratattattattatta! Powpowpowpow! Powpowpowpow! Pew-pew, pew-pew-pewpew! ]" << std::endl;
+		std::cout << GREEN_OPEN << this->_type << " " << this->_name << " " << challenges[i] \
+		<< "! Great! Keep this up!" << CLOSE << std::endl;
 		this->_energyPoints -= energy[i];
 	}
 	else
 	{
-		std::cout << YELLOW_OPEN << this->_type << " " << this->_name << " - khm... You don't have energy, sorryyyyyyyyyy:(" << CLOSE << std::endl;
+		std::cout << YELLOW_OPEN << this->_type << " " << this->_name \
+		<< " - khm... You don't have energy, sorryyyyyyyyyy:(" << CLOSE << std::endl;
 		return (0);
 	}
 	return energy[i];
@@ -210,15 +224,18 @@ unsigned int 		NinjaTrap::ninjaShoebox(NinjaTrap const &f)
 	int 			i;
 
 	i = std::rand()%5;
-	if (this->_energyPoints > i)
+	if (this->_energyPoints > energy[i])
 	{
-		std::cout << this->_type << " " << this->_name << " attacks " << f.getType() << " " << f.getName() << " - [ Ratattattattatta! Powpowpowpow! Powpowpowpow! Pew-pew, pew-pew-pewpew! ]" << std::endl;
-		std::cout << GREEN_OPEN << this->_type << " " << this->_name << " " << challenges[i] << "! Great! Keep this up!" << CLOSE << std::endl;
+		std::cout << this->_type << " " << this->_name << " attacks " << f.getType() << " " << f.getName() \
+		<< " - [ Ratattattattatta! Powpowpowpow! Powpowpowpow! Pew-pew, pew-pew-pewpew! ]" << std::endl;
+		std::cout << GREEN_OPEN << this->_type << " " << this->_name << " " << challenges[i] \
+		<< "! Great! Keep this up!" << CLOSE << std::endl;
 		this->_energyPoints -= energy[i];
 	}
 	else
 	{
-		std::cout << YELLOW_OPEN << this->_type << " " << this->_name << " - khm... You don't have energy, sorryyyyyyyyyy:(" << CLOSE << std::endl;
+		std::cout << YELLOW_OPEN << this->_type << " " << this->_name \
+		<< " - khm... You don't have energy, sorryyyyyyyyyy:(" << CLOSE << std::endl;
 		return (0);
 	}
 	return energy[i];

@@ -42,16 +42,23 @@ int			main(void)
 			a.takeDamage(hp);
 			c.beRepaired(5);
 		}
-		std::cout << "\e[4;39m" << a.getName() << " has " << a.getHitPoints() << " HP and " << c.getName() << " - " << c.getHitPoints() << " HP!" << end << std::endl;
-		std::cout << "\e[4;39m" << a.getName() << " has " << a.getEnergyPoints() << " energy points and " << c.getName() << " - " << c.getEnergyPoints() << " energy points!" << end << std::endl;
+		std::cout << "\e[4;39m" << a.getType() << " " << a.getName() << " has " \
+		<< a.getHitPoints() << " HP and " << c.getType() << " " << c.getName() \
+		<< " - " << c.getHitPoints() << " HP!" << end << std::endl;
+
+		std::cout << "\e[4;39m" << a.getType() << " " << a.getName() << " has " \
+		<< a.getEnergyPoints() << " EP and " << c.getType() << " " \
+		<< c.getName() << " - " << c.getEnergyPoints() << " EP!" << end << std::endl;
 		if (a.getHitPoints() == 0)
 		{
-			std::cout << "\e[1;31m" << c.getName() << " killed " << a.getName() << " in a fair fight..." << end << std::endl;
+			std::cout << "\e[1;31m" << c.getType() << " " << c.getName() << " killed " \
+			<< a.getType() << " " << a.getName() << " in a fair fight..." << end << std::endl;
 			break ;
 		}
 		else if (c.getHitPoints() == 0)
 		{
-			std::cout << "\e[1;31m" << a.getName() << " killed " << c.getName() << " in a fair fight..." << end << std::endl;
+			std::cout << "\e[1;31m" << a.getType() << " " << a.getName() << " killed " \
+			<< c.getType() << " " << c.getName() << " in a fair fight..." << end << std::endl;
 			break ;
 		}
 		std::cout << std::endl;

@@ -125,28 +125,28 @@ int			main(void)
 		<< nn.getType() << " " << nn.getName() << " has " << nn.getEnergyPoints() << " EP!" << end << std::endl;
 		if (!clap.getHitPoints())
 		{
-			std::cout << "\e[1;31m" << clap.getName() << " died..." << end << std::endl;
+			std::cout << "\e[1;31m" << clap.getType() << " " << clap.getName() << " died..." << end << std::endl;
 			break ;
 		}
 		else if (!frag.getHitPoints())
 		{
-			std::cout << "\e[1;31m" << frag.getName() << " died..." << end << std::endl;
+			std::cout << "\e[1;31m" << frag.getType() << " " << frag.getName() << " died..." << end << std::endl;
 			break ;
 		}
 		else if (!scav.getHitPoints())
 		{
-			std::cout << "\e[1;31m" << scav.getName() << " died..." << end << std::endl;
+			std::cout << "\e[1;31m" << scav.getType() << " " << scav.getName() << " died..." << end << std::endl;
 			break ;
 		}
 		else if (!nn.getHitPoints())
 		{
-			std::cout << "\e[1;31m" << nn.getName() << " died..." << end << std::endl;
+			std::cout << "\e[1;31m" << nn.getType() << " " << nn.getName() << " died..." << end << std::endl;
 			break ;
 		}
 		std::cout << std::endl;
 	}
-	std::cout << nn.getName() << " has " << nn.getHitPoints() << " HP!" << std::endl;
+	std::cout << nn.getType() << " " << nn.getName() << " has " << nn.getHitPoints() << " HP!" << std::endl;
 	nn = ninja;
-	std::cout << nn.getName() << " has " << nn.getHitPoints() << " HP!" << std::endl;
+	std::cout << nn.getType() << " " << nn.getName() << " has " << nn.getHitPoints() << " HP!" << std::endl;
 	return 0;
 }

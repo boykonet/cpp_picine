@@ -135,7 +135,7 @@ unsigned int 		NinjaTrap::ninjaShoebox(ClapTrap const &f)
 	int 			i;
 
 	i = std::rand()%5;
-	if (this->_energyPoints > i)
+	if (this->_energyPoints > energy[i])
 	{
 		std::cout << this->_type << " " << this->_name << " attacks " << f.getType() << " " << f.getName() << " - [ Ratattattattatta! Powpowpowpow! Powpowpowpow! Pew-pew, pew-pew-pewpew! ]" << std::endl;
 		std::cout << GREEN_OPEN << this->_type << " " << this->_name << " " << challenges[i] << "! Great! Keep this up!" << CLOSE << std::endl;
@@ -160,7 +160,7 @@ unsigned int 		NinjaTrap::ninjaShoebox(FragTrap const &f)
 	int 			i;
 
 	i = std::rand()%5;
-	if (this->_energyPoints > i)
+	if (this->_energyPoints > energy[i])
 	{
 		std::cout << this->_type << " " << this->_name << " attacks " << f.getType() << " " << f.getName() << " - [ Ratattattattatta! Powpowpowpow! Powpowpowpow! Pew-pew, pew-pew-pewpew! ]" << std::endl;
 		std::cout << GREEN_OPEN << this->_type << " " << this->_name << " " << challenges[i] << "! Great! Keep this up!" << CLOSE << std::endl;
@@ -185,7 +185,7 @@ unsigned int 		NinjaTrap::ninjaShoebox(ScavTrap const &f)
 	int 			i;
 
 	i = std::rand()%5;
-	if (this->_energyPoints > i)
+	if (this->_energyPoints > energy[i])
 	{
 		std::cout << this->_type << " " << this->_name << " attacks " << f.getType() << " " << f.getName() << " - [ Ratattattattatta! Powpowpowpow! Powpowpowpow! Pew-pew, pew-pew-pewpew! ]" << std::endl;
 		std::cout << GREEN_OPEN << this->_type << " " << this->_name << " " << challenges[i] << "! Great! Keep this up!" << CLOSE << std::endl;
@@ -210,7 +210,7 @@ unsigned int 		NinjaTrap::ninjaShoebox(NinjaTrap const &f)
 	int 			i;
 
 	i = std::rand()%5;
-	if (this->_energyPoints > i)
+	if (this->_energyPoints > energy[i])
 	{
 		std::cout << this->_type << " " << this->_name << " attacks " << f.getType() << " " << f.getName() << " - [ Ratattattattatta! Powpowpowpow! Powpowpowpow! Pew-pew, pew-pew-pewpew! ]" << std::endl;
 		std::cout << GREEN_OPEN << this->_type << " " << this->_name << " " << challenges[i] << "! Great! Keep this up!" << CLOSE << std::endl;
