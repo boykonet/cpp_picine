@@ -1,17 +1,21 @@
 #ifndef PEON_HPP
 # define PEON_HPP
 
-class 			Peon
+# include <iostream>
+# include <string>
+# include "Victim.hpp"
+
+class 			Peon : public Victim
 {
 public:
 	Peon(std::string name);
 	~Peon();
 	Peon(Peon const &o);
 	Peon				&operator=(Peon const &o);
+	void				getPolymorphed() const;
 	std::string 		getName() const;
 private:
 	Peon();
-	std::string 		_name;
 };
 
 std::ostream 			&operator<<(std::ostream &os, Peon const &o);

@@ -1,7 +1,9 @@
 #include "Sorcerer.hpp"
 
-Sorcerer::Sorcerer()
+Sorcerer::Sorcerer() : _name("Aleksandr"), _title("Magnificent")
 {
+	std::cout << this->_name << ", " << this->_title \
+	<< ", is born!" << std::endl;
 }
 
 Sorcerer::Sorcerer(std::string name, std::string title) : _name(name), _title(title)
@@ -18,6 +20,8 @@ Sorcerer::~Sorcerer()
 
 Sorcerer::Sorcerer(Sorcerer const &o)
 {
+	std::cout << this->_name << ", " << this->_title \
+	<< ", is born!" << std::endl;
 	*this = o;
 }
 
@@ -33,7 +37,7 @@ Sorcerer				&Sorcerer::operator=(Sorcerer const &o)
 
 void					Sorcerer::polymorph(Victim const &o) const
 {
-
+	o.getPolymorphed();
 }
 
 std::string 			Sorcerer::getName() const
@@ -48,6 +52,6 @@ std::string 			Sorcerer::getTitle() const
 
 std::ostream 			&operator<<(std::ostream &os, Sorcerer const &o)
 {
-	os << "I am " << o.getName() << ", " << o.getTitle() << ", and I like ponies!";
+	os << "I am " << o.getName() << ", " << o.getTitle() << ", and I like ponies!" << std::endl;
 	return (os);
 }
