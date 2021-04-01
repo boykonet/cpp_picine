@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string>
+# include "Victim.hpp"
 
 class		Sorcerer
 {
@@ -11,6 +12,7 @@ public:
 	~Sorcerer();
 	Sorcerer(Sorcerer const &o);
 	Sorcerer			&operator=(Sorcerer const &o);
+	void				polymorph(Victim const &o) const;
 	std::string 		getName() const;
 	std::string 		getTitle() const;
 

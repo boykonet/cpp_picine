@@ -21,7 +21,7 @@ Victim::Victim(Victim const &o)
 	*this = o;
 }
 
-Victim				&Victim::operator=(Victim const &o)
+Victim					&Victim::operator=(Victim const &o)
 {
 	if (this != &o)
 	{
@@ -30,7 +30,18 @@ Victim				&Victim::operator=(Victim const &o)
 	return *this;
 }
 
-std::string 		Victim::getName() const
+std::string 			Victim::getName() const
 {
 	return this->_name;
+}
+
+void					Victim::getPolymorphed() const
+{
+	std::cout << this->_name << " has been turned into a cute little sheep!" << std::endl;
+}
+
+std::ostream 			&operator<<(std::ostream &os, Victim const &o)
+{
+	os << "I'm " << o.getName() << " and I like otters!" << std::endl;
+	return (os);
 }

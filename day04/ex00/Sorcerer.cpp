@@ -31,6 +31,11 @@ Sorcerer				&Sorcerer::operator=(Sorcerer const &o)
 	return *this;
 }
 
+void					Sorcerer::polymorph(Victim const &o) const
+{
+
+}
+
 std::string 			Sorcerer::getName() const
 {
 	return this->_name;
