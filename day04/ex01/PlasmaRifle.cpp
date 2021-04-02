@@ -4,9 +4,9 @@ PlasmaRifle::PlasmaRifle() : AWeapon("Plasma Rifle", 5, 21)
 {
 }
 
-PlasmaRifle::PlasmaRifle(std::string name, int apcost, int damage) : AWeapon("Plasma Rifle", 5, 21)
-{
-}
+//PlasmaRifle::PlasmaRifle(std::string name, int apcost, int damage) : AWeapon("Plasma Rifle", 5, 21)
+//{
+//}
 
 PlasmaRifle::~PlasmaRifle()
 {

@@ -4,15 +4,15 @@ PowerFist::PowerFist() : AWeapon("Power Fist", 8, 50)
 {
 }
 
-PowerFist::PowerFist(std::string name, int apcost, int damage) : AWeapon("Power Fist", 8, 50)
-{
-}
+//PowerFist::PowerFist(std::string name, int apcost, int damage) : AWeapon("Power Fist", 8, 50)
+//{
+//}
 
 PowerFist::~PowerFist()
 {
 }
 
-PlasmaRifle::PlasmaRifle(PlasmaRifle const &o) : AWeapon(o)
+PowerFist::PowerFist(PowerFist const &o) : AWeapon(o)
 {
 	*this = o;
 }

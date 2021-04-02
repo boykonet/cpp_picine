@@ -16,13 +16,17 @@ public:
 	void					recoverAP();
 	void					equip(AWeapon*);
 	void					attack(Enemy*);
-	std::string				getName() const;
+	std::string const		&getName() const;
+	int 					getAP() const;
+	AWeapon					*getAWeapon() const;
 
 private:
 	Character();
 	std::string 			_name;
-	int 					_hp;
+	int 					_ap;
 	AWeapon					*_w;
 };
+
+std::ostream			&operator<<(std::ostream &os, Character const &o);
 
 #endif
