@@ -4,10 +4,6 @@ PowerFist::PowerFist() : AWeapon("Power Fist", 8, 50)
 {
 }
 
-//PowerFist::PowerFist(std::string name, int apcost, int damage) : AWeapon("Power Fist", 8, 50)
-//{
-//}
-
 PowerFist::~PowerFist()
 {
 }

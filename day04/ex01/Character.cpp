@@ -8,8 +8,17 @@ Character::Character(std::string const &name) : _name(name), _ap(40), _w(nullptr
 {
 }
 
+Character::Character(std::string const &name, int ap) : _name(name), _ap(ap), _w(nullptr)
+{
+}
+
+Character::Character(std::string const &name, int ap, AWeapon *w) : _name(name), _ap(ap), _w(w)
+{
+}
+
 Character::~Character()
 {
+	this->_w = nullptr;
 }
 
 Character::Character(Character const &o)
@@ -50,10 +59,15 @@ void					Character::attack(Enemy *e)
 			{
 				std::cout << this->_name << " attacks " << e->getType() << " with a " << this->_w->getName() << std::endl;
 				this->_w->attack();
+				this->_ap -= this->_w->getAPCost();
+				e->takeDamage(this->_w->getDamage());
+				if (e->getHP() == 0)
+				{
+					delete e;
+					e = nullptr;
+				}
 			}
 		}
-//		else
-//			std::cout << this->_name << ", you don't have any weapons yet." << std::endl;
 	}
 }
 

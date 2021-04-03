@@ -9,7 +9,6 @@ class 			PlasmaRifle : public AWeapon
 {
 public:
 	PlasmaRifle();
-//	PlasmaRifle(std::string name, int apcost, int damage);
 	~PlasmaRifle();
 	PlasmaRifle(PlasmaRifle const &o);
 	PlasmaRifle				&operator=(PlasmaRifle const &o);

@@ -1,6 +1,6 @@
 #include "AWeapon.hpp"
 
-AWeapon::AWeapon() : _name(""), _apcost(), _damage()
+AWeapon::AWeapon() : _name("My Weapon"), _apcost(5), _damage(20)
 {
 }
 
@@ -28,7 +28,7 @@ AWeapon					&AWeapon::operator=(AWeapon const &o)
 	return *this;
 }
 
-std::string				AWeapon::getName() const
+std::string const		&AWeapon::getName() const
 {
 	return this->_name;
 }

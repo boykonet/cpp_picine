@@ -8,7 +8,6 @@
 class			SuperMutant : public Enemy
 {
 public:
-	SuperMutant(int hp, std::string const &type);
 	~SuperMutant();
 	SuperMutant(SuperMutant const &o);
 	SuperMutant				&operator=(SuperMutant const &o);

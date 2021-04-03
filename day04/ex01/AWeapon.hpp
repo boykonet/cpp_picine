@@ -11,7 +11,7 @@ public:
 	virtual ~AWeapon();
 	AWeapon(AWeapon const &o);
 	AWeapon					&operator=(AWeapon const &o);
-	std::string				getName() const;
+	std::string const		&getName() const;
 	int						getAPCost() const;
 	int						getDamage() const;
 	virtual void			attack() const = 0;
