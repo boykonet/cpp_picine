@@ -1,6 +1,10 @@
 #ifndef ISQUAD_HPP
 # define ISQUAD_HPP
 
+#include <iostream>
+#include <string>
+#include "ISpaceMarine.hpp"
+
 class			ISquad
 {
 public:

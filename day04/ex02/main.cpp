@@ -1,5 +1,9 @@
 #include <iostream>
 #include <string>
+#include "ISpaceMarine.hpp"
+#include "TacticalMarine.hpp"
+#include "AssaultTerminator.hpp"
+#include "Squad.hpp"
 
 int				main()
 {

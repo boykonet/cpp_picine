@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include "ISquad.hpp"
+#include "ISpaceMarine.hpp"
 
 class			Squad : public ISquad
 {
@@ -13,10 +14,10 @@ public:
 	Squad(Squad const &o);
 	Squad					&operator=(Squad const &o);
 	int						getCount() const;
-	ISpaceMarine*			getUnit(int n) const;
+	ISpaceMarine			*getUnit(int n) const;
 	int						push(ISpaceMarine *m);
 private:
-	
+	ISpaceMarine			**_s;
 };
 
 #endif
