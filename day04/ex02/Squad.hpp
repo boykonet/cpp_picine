@@ -17,7 +17,8 @@ public:
 	ISpaceMarine			*getUnit(int n) const;
 	int						push(ISpaceMarine *m);
 private:
-	ISpaceMarine			**_s;
+	ISpaceMarine			**_units;
+	int 					_countUnits;
 };
 
 #endif

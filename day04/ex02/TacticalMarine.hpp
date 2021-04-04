@@ -16,8 +16,6 @@ public:
 	void						battleCry() const;
 	void						rangedAttack() const;
 	void						meleeAttack() const;
-private:
-	ISpaceMarine				*_o;
 };
 
 #endif

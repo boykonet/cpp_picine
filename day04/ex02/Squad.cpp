@@ -1,17 +1,19 @@
 #include "Squad.hpp"
 
-Squad::Squad() : _s(nullptr)
+Squad::Squad() : _units(nullptr), _countUnits(0)
 {
 }
 
 Squad::~Squad()
 {
-	if (this->_s)
+	if (this->_units)
 	{
-		for (int i = 0; this->_s[i]; i++)
-			delete this->_s[i];
-		delete [] this->_s;
+		for (int i = 0; i < this->_countUnits; i++)
+			delete this->_units[i];
+		delete [] this->_units;
 	}
+	this->_units = nullptr;
+	this->_countUnits = 0;
 }
 
 Squad::Squad(Squad const &o)
@@ -23,57 +25,61 @@ Squad					&Squad::operator=(Squad const &o)
 {
 	if (this != &o)
 	{
-		;
+		if (this->_units)
+		{
+			for (int i = 0; i < this->_countUnits; i++)
+				delete this->_units[i];
+			delete [] this->_units;
+		}
+		this->_units = new ISpaceMarine* [o.getCount()];
+		this->_countUnits = 0;
+		for (int i = 0; i < o.getCount(); i++)
+		{
+			this->_units[i] = o.getUnit(i);
+			this->_countUnits++;
+		}
 	}
 	return *this;
 }
 
 int						Squad::getCount() const
 {
-	int		i;
-
-	i = 0;
-	if (this->_s)
-	{
-		while (this->_s[i])
-			i++;
-	}
-	return i;
+	return this->_countUnits;
 }
 
 ISpaceMarine*			Squad::getUnit(int n) const
 {
-	int 	count;
-
-	count = this->getCount();
-	if (n >= 0 && count && n < count)
-		return this->_s[n];
+	if (n >= 0 && this->_countUnits && n < this->_countUnits)
+		return this->_units[n];
 	return nullptr;
 }
 
 int						Squad::push(ISpaceMarine *m)
 {
 	ISpaceMarine	**u;
-	int 			count;
 
-	count = this->getCount();
 	if (m)
 	{
-		if (!count)
+		if (!this->_countUnits)
 		{
-			this->_s = new ISpaceMarine* [1];
-			this->_s[0] = m;
+			this->_units = new ISpaceMarine* [1];
+			this->_units[0] = m;
+			this->_countUnits++;
 		}
 		else
 		{
-			u = this->_s;
-			this->_s = new ISpaceMarine* [count + 1];
-			for (int i = 0; i < count + 1; i++)
+			u = this->_units;
+			this->_units = new ISpaceMarine* [this->_countUnits + 1];
+			for (int i = 0; i < this->_countUnits + 1; i++)
 			{
-				if (i < count)
-					this->_s[i] = u[i];
+				if (i < this->_countUnits)
+					this->_units[i] = u[i];
 				else
-					this->_s[i] = m;
+				{
+					this->_units[i] = m;
+					this->_countUnits++;
+					break ;
+				}
 			}
 			delete [] u;
 		}

@@ -18,19 +18,16 @@ TacticalMarine::TacticalMarine(TacticalMarine const &o)
 
 TacticalMarine				&TacticalMarine::operator=(TacticalMarine const &o)
 {
-	if (this != &o)
-	{
-		;
-	}
+	(void)o;
 	return *this;
 }
 
 ISpaceMarine				*TacticalMarine::clone() const
 {
-	TacticalMarine			a;
+	TacticalMarine			*a = nullptr;
 
-	a = *this;
-	return &a;
+	*a = *this;
+	return a;
 }
 
 void						TacticalMarine::battleCry() const

@@ -18,18 +18,19 @@ AssaultTerminator::AssaultTerminator(AssaultTerminator const &o)
 
 AssaultTerminator			&AssaultTerminator::operator=(AssaultTerminator const &o)
 {
-	if (this != &o)
-	{
-		;
-	}
+	(void)o;
+//	if (this != &o)
+//	{
+//		;
+//	}
 	return *this;
 }
 
 ISpaceMarine				*AssaultTerminator::clone() const
 {
-	ISpaceMarine			*a;
+	ISpaceMarine			*a = nullptr;
 
-	a = this->_a;
+	*a = *this;
 	return a;
 }
 
