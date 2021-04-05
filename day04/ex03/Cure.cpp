@@ -4,10 +4,6 @@ Cure::Cure() : AMateria("cure")
 {
 }
 
-Cure::Cure(std::string const &type) : AMateria(type)
-{
-}
-
 Cure::Cure(Cure const &o) : AMateria(o)
 {
 	*this = o;
@@ -16,10 +12,7 @@ Cure::Cure(Cure const &o) : AMateria(o)
 Cure				&Cure::operator=(Cure const &o)
 {
 	if (this != &o)
-	{
-		this->_type = o.getType();
-		this->_xp = o.getXP();
-	}
+		AMateria::operator=(o);
 	return *this;
 }
 

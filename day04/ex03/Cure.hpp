@@ -9,7 +9,6 @@ class			Cure : public AMateria
 {
 public:
 	Cure();
-	Cure(std::string const &type);
 	Cure(Cure const &o);
 	Cure				&operator=(Cure const &o);
 	~Cure();

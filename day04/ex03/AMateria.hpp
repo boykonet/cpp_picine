@@ -1,9 +1,8 @@
 #ifndef AMATERIA_HPP
 # define AMATERIA_HPP
 
-#include <iostream>
-#include <string>
-#include "ICharacter.hpp"
+# include <iostream>
+# include <string>
 
 class			AMateria
 {
@@ -15,7 +14,7 @@ private:
 public:
 	AMateria(std::string const &type);
 	AMateria(AMateria const &o);
-	AMateria			&operator=(AMateria const &o);
+	AMateria	&operator=(AMateria const &o);
 	virtual ~AMateria();
 	std::string const	&getType() const;
 	unsigned int		getXP() const;

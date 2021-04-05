@@ -30,7 +30,7 @@ Character						&Character::operator=(Character const &o)
 
 Character::~Character()
 {
-
+	
 }
 
 std::string const				&Character::getName() const
