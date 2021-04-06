@@ -1,6 +1,7 @@
 #ifndef ICHARACTER_HPP
 # define ICHARACTER_HPP
 
+class			AMateria;
 # include <iostream>
 # include <string>
 # include "AMateria.hpp"

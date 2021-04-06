@@ -1,17 +1,20 @@
 #ifndef CHARACTER_HPP
 # define CHARACTER_HPP
 
+# define NUM_MATERIA	4
 # include <iostream>
 # include <string>
 # include "AMateria.hpp"
 # include "ICharacter.hpp"
+
+class			AMateria;
 
 class			Character : public ICharacter
 {
 private:
 	Character();
 	std::string 					_name;
-	AMateria						*_m[4];
+	AMateria						*_m[NUM_MATERIA];
 public:
 	Character(std::string const &name);
 	Character(Character const &o);

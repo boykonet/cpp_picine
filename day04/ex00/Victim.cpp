@@ -39,7 +39,7 @@ std::string 			Victim::getName() const
 
 void					Victim::getPolymorphed() const
 {
-	std::cout << this->_name << " has been turned into a cute little sheep!" << std::endl;
+	std::cout << "\e[1;33m" << this->_name << " has been turned into a cute little sheep!" << "\e[0m" << std::endl;
 }
 
 std::ostream 			&operator<<(std::ostream &os, Victim const &o)

@@ -8,13 +8,11 @@
 class			SuperMutant : public Enemy
 {
 public:
+	SuperMutant();
 	~SuperMutant();
 	SuperMutant(SuperMutant const &o);
 	SuperMutant				&operator=(SuperMutant const &o);
 	void					takeDamage(int damage);
-
-private:
-	SuperMutant();
 };
 
 #endif

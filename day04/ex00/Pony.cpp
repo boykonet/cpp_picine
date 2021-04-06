@@ -30,7 +30,7 @@ Pony					&Pony::operator=(Pony const &o)
 
 void					Pony::getPolymorphed() const
 {
-	std::cout << this->_name << " has been turned into a thoroughbred stallion with a pink tail!" << std::endl;
+	std::cout << "\e[1;36m" << this->_name << " has been turned into a thoroughbred stallion with a pink tail!" << "\e[0m" << std::endl;
 }
 
 std::string 			Pony::getName() const

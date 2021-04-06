@@ -23,10 +23,7 @@ Ice::~Ice()
 
 AMateria			*Ice::clone() const
 {
-	Ice				*a = nullptr;
-
-	*a = *this;
-	return a;
+	return new Ice (*this);
 }
 
 void				Ice::use(ICharacter &target)

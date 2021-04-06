@@ -1,9 +1,10 @@
 #ifndef CURE_HPP
 # define CURE_HPP
 
-#include <iostream>
-#include <string>
-#include "AMateria.hpp"
+# include <iostream>
+# include <string>
+# include "AMateria.hpp"
+# include "ICharacter.hpp"
 
 class			Cure : public AMateria
 {
