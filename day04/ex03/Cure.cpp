@@ -22,10 +22,7 @@ Cure::~Cure()
 
 AMateria			*Cure::clone() const
 {
-	Cure			*a = nullptr;
-
-	*a = *this;
-	return a;
+	return new Cure (*this);
 }
 
 void				Cure::use(ICharacter &target)

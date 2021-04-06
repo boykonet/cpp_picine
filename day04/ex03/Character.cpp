@@ -23,24 +23,28 @@ Character						&Character::operator=(Character const &o)
 	{
 		this->_name = o.getName();
 		if (this->_m[0])
-			;
+		{
+			for (int i = 0; this->_m[i]; i++)
+				delete this->_m[i];
+		}
 	}
 	return *this;
 }
 
 Character::~Character()
 {
-	
+	for (int i = 0; this->_m[i]; i++)
+		delete this->_m[i];
 }
 
 std::string const				&Character::getName() const
 {
-
+	return this->_name;
 }
 
 void							Character::equip(AMateria *m)
 {
-
+	for ()
 }
 
 void							Character::unequip(int idx)
@@ -50,5 +54,5 @@ void							Character::unequip(int idx)
 
 void							Character::use(int idx, ICharacter	&target)
 {
-
+	AMateria::use(target);
 }
