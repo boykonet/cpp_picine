@@ -12,26 +12,19 @@ AssaultTerminator::~AssaultTerminator()
 
 AssaultTerminator::AssaultTerminator(AssaultTerminator const &o)
 {
-	std::cout << "* teleports from space *" << std::endl;
 	*this = o;
+	std::cout << "* teleports from space *" << std::endl;
 }
 
 AssaultTerminator			&AssaultTerminator::operator=(AssaultTerminator const &o)
 {
 	(void)o;
-//	if (this != &o)
-//	{
-//		;
-//	}
 	return *this;
 }
 
 ISpaceMarine				*AssaultTerminator::clone() const
 {
-	ISpaceMarine			*a = nullptr;
-
-	*a = *this;
-	return a;
+	return new AssaultTerminator(*this);
 }
 
 void						AssaultTerminator::battleCry() const

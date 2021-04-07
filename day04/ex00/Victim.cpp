@@ -21,6 +21,8 @@ Victim::~Victim()
 Victim::Victim(Victim const &o)
 {
 	*this = o;
+	std::cout << "Some random victim called " << this->_name \
+	<< " just appeared!" << std::endl;
 }
 
 Victim					&Victim::operator=(Victim const &o)

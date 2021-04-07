@@ -47,9 +47,9 @@ int						Squad::getCount() const
 	return this->_countUnits;
 }
 
-ISpaceMarine*			Squad::getUnit(int n) const
+ISpaceMarine			*Squad::getUnit(int n) const
 {
-	if (n >= 0 && this->_countUnits && n < this->_countUnits)
+	if (n >= 0 && n < this->_countUnits)
 		return this->_units[n];
 	return nullptr;
 }

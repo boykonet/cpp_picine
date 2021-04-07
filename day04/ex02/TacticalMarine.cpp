@@ -12,8 +12,8 @@ TacticalMarine::~TacticalMarine()
 
 TacticalMarine::TacticalMarine(TacticalMarine const &o)
 {
-	std::cout << "Tactical Marine ready for battle!" << std::endl;
 	*this = o;
+	std::cout << "Tactical Marine ready for battle!" << std::endl;
 }
 
 TacticalMarine				&TacticalMarine::operator=(TacticalMarine const &o)
@@ -24,10 +24,7 @@ TacticalMarine				&TacticalMarine::operator=(TacticalMarine const &o)
 
 ISpaceMarine				*TacticalMarine::clone() const
 {
-	TacticalMarine			*a = nullptr;
-
-	*a = *this;
-	return a;
+	return new TacticalMarine(*this);
 }
 
 void						TacticalMarine::battleCry() const
