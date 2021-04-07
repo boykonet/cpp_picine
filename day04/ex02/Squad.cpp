@@ -6,7 +6,7 @@ Squad::Squad() : _units(nullptr), _countUnits(0)
 
 Squad::~Squad()
 {
-	if (this->_units)
+	if (this->_countUnits > 0)
 	{
 		for (int i = 0; i < this->_countUnits; i++)
 			delete this->_units[i];
@@ -25,19 +25,18 @@ Squad					&Squad::operator=(Squad const &o)
 {
 	if (this != &o)
 	{
-		if (this->_units)
+		if (this->_countUnits > 0)
 		{
 			for (int i = 0; i < this->_countUnits; i++)
 				delete this->_units[i];
 			delete [] this->_units;
+			this->_units = nullptr;
+			this->_countUnits = 0;
 		}
 		this->_units = new ISpaceMarine* [o.getCount()];
-		this->_countUnits = 0;
-		for (int i = 0; i < o.getCount(); i++)
-		{
-			this->_units[i] = o.getUnit(i);
-			this->_countUnits++;
-		}
+		this->_countUnits = o.getCount();
+		for (int i = 0; i < this->_countUnits; i++)
+			this->_units[i] = o.getUnit(i)->clone();
 	}
 	return *this;
 }
@@ -64,7 +63,7 @@ int						Squad::push(ISpaceMarine *m)
 		{
 			this->_units = new ISpaceMarine* [1];
 			this->_units[0] = m;
-			this->_countUnits++;
+			this->_countUnits = 1;
 		}
 		else
 		{

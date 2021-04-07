@@ -5,6 +5,8 @@
 #include "PlasmaRifle.hpp"
 #include "PowerFist.hpp"
 #include "SuperMutant.hpp"
+#include "Joker.hpp"
+#include "WaterGun.hpp"
 
 void 		subject()
 {
@@ -88,15 +90,17 @@ void 		my()
 	std::cout << "\e[1;31m" << "THE GAME STARTED" << "\e[0m" << std::endl;
 	Enemy			*scorpion = new RadScorpion();
 	Enemy			*mutant = new SuperMutant();
+	Enemy			*joker = new Joker();
 
 	AWeapon			*pr = new PlasmaRifle();
 	AWeapon			*pf = new PowerFist();
+	AWeapon			*wg = new WaterGun();
 
 	std::cout << std::endl;
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 14; i++)
 	{
 		std::cout << "\e[1;36m" << "Round " << i << "\e[0m" << std::endl;
-		if (!(i % 2))
+		if ((i % 3) == 0)
 		{
 			me->equip(pr);
 			std::cout << *me;
@@ -108,9 +112,14 @@ void 		my()
 				delete you;
 			}
 		}
-		else
+		else if ((i % 3) == 1)
 		{
 			me->equip(pf);
+			std::cout << *me;
+		}
+		else
+		{
+			me->equip(wg);
 			std::cout << *me;
 		}
 		if (me->getAP() < me->getAWeapon()->getAPCost())
@@ -119,14 +128,19 @@ void 		my()
 				me->recoverAP();
 			std::cout << "\e[1;32m" << *me << "\e[0m";
 		}
-		if (!(i % 2))
+		if ((i % 3) == 0 && i < 10)
 		{
 			me->attack(scorpion);
 			std::cout << *me;
 		}
-		else
+		else if ((i % 3) == 1 && i < 11)
 		{
 			me->attack(mutant);
+			std::cout << *me;
+		}
+		else
+		{
+			me->attack(joker);
 			std::cout << *me;
 		}
 		std::cout << std::endl;
@@ -134,6 +148,7 @@ void 		my()
 	delete me;
 	delete pr;
 	delete pf;
+	delete wg;
 }
 
 int			main()
