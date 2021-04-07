@@ -12,8 +12,8 @@ SuperMutant::~SuperMutant()
 
 SuperMutant::SuperMutant(SuperMutant const &o) : Enemy(o)
 {
-	std::cout << "\e[1;32m" << "Gaaah. Me want smash heads!" << "\e[0m" << std::endl;
 	*this = o;
+	std::cout << "\e[1;32m" << "Gaaah. Me want smash heads!" << "\e[0m" << std::endl;
 }
 
 SuperMutant				&SuperMutant::operator=(SuperMutant const &o)

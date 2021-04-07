@@ -67,6 +67,8 @@ void					Character::attack(Enemy *e)
 					e = nullptr;
 				}
 			}
+			else
+				std::cout << "You don't have AP that attack your enemy " << e->getType() << std::endl;
 		}
 	}
 }

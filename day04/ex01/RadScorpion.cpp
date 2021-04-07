@@ -12,8 +12,8 @@ RadScorpion::~RadScorpion()
 
 RadScorpion::RadScorpion(RadScorpion const &o) : Enemy(o)
 {
-	std::cout << "\e[1;32m" << "* click click click *" << "\e[0m" << std::endl;
 	*this = o;
+	std::cout << "\e[1;32m" << "* click click click *" << "\e[0m" << std::endl;
 }
 
 RadScorpion				&RadScorpion::operator=(RadScorpion const &o)

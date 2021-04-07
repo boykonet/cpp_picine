@@ -1,6 +1,6 @@
 #include "Sorcerer.hpp"
 
-Sorcerer::Sorcerer() : _name("Aleksandr"), _title("Magnificent")
+Sorcerer::Sorcerer() : _name("Alexander"), _title("the Magnificent")
 {
 	std::cout << this->_name << ", " << this->_title \
 	<< ", is born!" << std::endl;

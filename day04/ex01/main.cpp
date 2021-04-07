@@ -113,6 +113,12 @@ void 		my()
 			me->equip(pf);
 			std::cout << *me;
 		}
+		if (me->getAP() < me->getAWeapon()->getAPCost())
+		{
+			for (int i = 0; me->getAP() < 40; i++)
+				me->recoverAP();
+			std::cout << "\e[1;32m" << *me << "\e[0m";
+		}
 		if (!(i % 2))
 		{
 			me->attack(scorpion);
@@ -124,8 +130,6 @@ void 		my()
 			std::cout << *me;
 		}
 		std::cout << std::endl;
-		if (me->getAP() < 10)
-			me->recoverAP();
 	}
 	delete me;
 	delete pr;

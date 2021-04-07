@@ -9,7 +9,7 @@ class			SuperMutant : public Enemy
 {
 public:
 	SuperMutant();
-	~SuperMutant();
+	virtual ~SuperMutant();
 	SuperMutant(SuperMutant const &o);
 	SuperMutant				&operator=(SuperMutant const &o);
 	void					takeDamage(int damage);

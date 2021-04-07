@@ -9,7 +9,7 @@ class			RadScorpion : public Enemy
 {
 public:
 	RadScorpion();
-	~RadScorpion();
+	virtual ~RadScorpion();
 	RadScorpion(RadScorpion const &o);
 	RadScorpion				&operator=(RadScorpion const &o);
 };

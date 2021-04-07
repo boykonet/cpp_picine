@@ -9,7 +9,7 @@ class 			Pony : public Victim
 {
 public:
 	Pony(std::string name);
-	~Pony();
+	virtual ~Pony();
 	Pony(Pony const &o);
 	Pony				&operator=(Pony const &o);
 	void				getPolymorphed() const;
