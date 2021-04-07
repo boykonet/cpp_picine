@@ -19,8 +19,19 @@ void 		subject()
 void 		my()
 {
 	std::cout << "\e[1;33m" << "> > > > > > > > > > MY < < < < < < < < < <" << "\e[0m" << std::endl;
+	std::cout << "\e[1;35m" << "Сreate Valera and copy Valera" << "\e[0m" << std::endl;
 	Sorcerer		valera("Valera", "the Magnificent");
+	Sorcerer		va(valera);
+
+	std::cout << "\e[1;35m" << "Сreate Pony and copy Pony" << "\e[0m" << std::endl;
 	Pony			pony("Pony");
+	Pony			poo(pony);
+
+	std::cout << "\e[1;35m" << "Сreate Peon and copy Peon" << "\e[0m" << std::endl;
+	Peon			peon("Peon");
+	Peon			pee(peon);
+
+	std::cout << "\e[1;35m" << "Сreate Pe and Po" << "\e[0m" << std::endl;
 	Victim			*pe = new Peon("Pe");
 	Victim			*po = new Pony("Po");
 

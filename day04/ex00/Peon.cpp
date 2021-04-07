@@ -18,6 +18,7 @@ Peon::~Peon()
 Peon::Peon(Peon const &o) : Victim(o)
 {
 	*this = o;
+	std::cout << "Zog zog." << std::endl;
 }
 
 Peon					&Peon::operator=(Peon const &o)

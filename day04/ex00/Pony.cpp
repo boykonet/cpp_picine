@@ -17,8 +17,8 @@ Pony::~Pony()
 
 Pony::Pony(Pony const &o) : Victim(o)
 {
-	std::cout << "Igogo. Igogo." << std::endl;
 	*this = o;
+	std::cout << "Igogo. Igogo." << std::endl;
 }
 
 Pony					&Pony::operator=(Pony const &o)

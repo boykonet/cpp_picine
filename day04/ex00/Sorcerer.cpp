@@ -20,9 +20,9 @@ Sorcerer::~Sorcerer()
 
 Sorcerer::Sorcerer(Sorcerer const &o)
 {
+	*this = o;
 	std::cout << this->_name << ", " << this->_title \
 	<< ", is born!" << std::endl;
-	*this = o;
 }
 
 Sorcerer				&Sorcerer::operator=(Sorcerer const &o)

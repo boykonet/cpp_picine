@@ -26,5 +26,5 @@ PlasmaRifle				&PlasmaRifle::operator=(PlasmaRifle const &o)
 
 void					PlasmaRifle::attack() const
 {
-	std::cout << "* piouuu piouuu piouuu *" << std::endl;
+	std::cout << "\e[1;34m" << "* piouuu piouuu piouuu *" << "\e[0m" << std::endl;
 }

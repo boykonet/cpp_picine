@@ -2,17 +2,17 @@
 
 RadScorpion::RadScorpion() : Enemy(80, "RadScorpion")
 {
-	std::cout << "* click click click *" << std::endl;
+	std::cout << "\e[1;32m" << "* click click click *" << "\e[0m" << std::endl;
 }
 
 RadScorpion::~RadScorpion()
 {
-	std::cout << "* SPROTCH *" << std::endl;
+	std::cout << "\e[1;31m" << "* SPROTCH *" << "\e[0m" << std::endl;
 }
 
 RadScorpion::RadScorpion(RadScorpion const &o) : Enemy(o)
 {
-	std::cout << "* click click click *" << std::endl;
+	std::cout << "\e[1;32m" << "* click click click *" << "\e[0m" << std::endl;
 	*this = o;
 }
 

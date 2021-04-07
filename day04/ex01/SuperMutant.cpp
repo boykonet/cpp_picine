@@ -2,17 +2,17 @@
 
 SuperMutant::SuperMutant() : Enemy(170, "Super Mutant")
 {
-	std::cout << "Gaaah. Me want smash heads!" << std::endl;
+	std::cout << "\e[1;32m" << "Gaaah. Me want smash heads!" << "\e[0m" << std::endl;
 }
 
 SuperMutant::~SuperMutant()
 {
-	std::cout << "Aaargh..." << std::endl;
+	std::cout << "\e[1;31m" << "Aaargh..." << "\e[0m" << std::endl;
 }
 
 SuperMutant::SuperMutant(SuperMutant const &o) : Enemy(o)
 {
-	std::cout << "Gaaah. Me want smash heads!" << std::endl;
+	std::cout << "\e[1;32m" << "Gaaah. Me want smash heads!" << "\e[0m" << std::endl;
 	*this = o;
 }
 

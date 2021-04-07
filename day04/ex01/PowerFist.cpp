@@ -26,5 +26,5 @@ PowerFist				&PowerFist::operator=(PowerFist const &o)
 
 void					PowerFist::attack() const
 {
-	std::cout << "* pschhh... SBAM! *" << std::endl;
+	std::cout << "\e[1;35m" << "* pschhh... SBAM! *" << "\e[0m" << std::endl;
 }
