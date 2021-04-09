@@ -23,6 +23,8 @@ Squad::Squad(Squad const &o)
 
 Squad					&Squad::operator=(Squad const &o)
 {
+	ISpaceMarine			*a;
+
 	if (this != &o)
 	{
 		if (this->_countUnits > 0)
@@ -36,7 +38,11 @@ Squad					&Squad::operator=(Squad const &o)
 		this->_units = new ISpaceMarine* [o.getCount()];
 		this->_countUnits = o.getCount();
 		for (int i = 0; i < this->_countUnits; i++)
-			this->_units[i] = o.getUnit(i)->clone();
+		{
+			a = o.getUnit(i);
+			if (a)
+				this->_units[i] = a->clone();
+		}
 	}
 	return *this;
 }

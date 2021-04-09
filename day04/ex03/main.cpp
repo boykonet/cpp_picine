@@ -37,24 +37,24 @@ void 			my()
 {
 	std::cout << "\e[1;33m" << "> > > > > > > > > >    MY   < < < < < < < < < <" << "\e[0m" << std::endl;
 	IMateriaSource		*materia = new MateriaSource();
-	ICharacter			*julia = new Character("julia");
-	ICharacter			*bob = new Character("bob");
+	Character			*julia = new Character("julia");
+	Character			*bob = new Character("bob");
 	AMateria			*tmp;
 
 	materia->learnMateria(new Cure());
 	materia->learnMateria(new Ice());
 	materia->learnMateria(new Cure());
 	materia->learnMateria(new Ice());
-	std::cout << "I am now awaiting an overflow message" << std::endl;
+	std::cout << "\e[1;33m" << "I am now awaiting an overflow message" << "\e[0m" << std::endl;
 	tmp = new Ice();
 	materia->learnMateria(tmp);
 	delete tmp;
-	std::cout << "Waited" << std::endl;
+	std::cout << "\e[1;33m" << "WORK!" << "\e[0m" << std::endl;
 	std::cout << std::endl;
 
-	std::cout << "I am now awaiting an null pointer message" << std::endl;
+	std::cout << "\e[1;33m" << "I am now awaiting an null pointer message" << "\e[0m" << std::endl;
 	materia->learnMateria(nullptr);
-	std::cout << "Waited" << std::endl;
+	std::cout << "\e[1;33m" << "WORK!" << "\e[0m" << std::endl;
 	std::cout << std::endl;
 
 
@@ -62,10 +62,10 @@ void 			my()
 	julia->equip(tmp);
 	tmp = materia->createMateria("ice");
 	julia->equip(tmp);
-	std::cout << "Now I want to delete item at index 1" << std::endl;
+	std::cout << "\e[1;33m" << "Now I want to delete item at index 1" << "\e[0m" << std::endl;
 	julia->unequip(1);
 	delete tmp;
-	std::cout << "And add new item in index 1" << std::endl;
+	std::cout << "\e[1;33m" << "And add new item in index 1" << "\e[0m" << std::endl;
 	tmp = materia->createMateria("ice");
 	julia->equip(tmp);
 
@@ -73,6 +73,21 @@ void 			my()
 	std::cout << "Count XP: " << tmp->getXP() << std::endl;
 	julia->use(1, *bob);
 	std::cout << "Count XP: " << tmp->getXP() << std::endl;
+
+	std::cout << "Check operator= - *bob = *julia" << std::endl;
+	std::cout << "BEFORE" << std::endl;
+	std::cout << bob->getName() << std::endl;
+	*bob = *julia;
+	std::cout << "AFTER" << std::endl;
+	std::cout << bob->getName() << std::endl;
+
+	std::cout << "\e[1;33m" << "Bob use Julia's AMateria" << "\e[0m" << std::endl;
+	bob->use(0, *julia);
+	bob->use(1, *julia);
+
+	std::cout << "\e[1;33m" << "Julia use Bob's AMateria" << "\e[0m" << std::endl;
+	julia->use(0, *bob);
+	julia->use(1, *bob);
 
 	delete bob;
 	delete julia;

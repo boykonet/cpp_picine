@@ -19,6 +19,8 @@ Character::Character(Character const &o)
 
 Character						&Character::operator=(Character const &o)
 {
+	AMateria const			*a;
+
 	if (this != &o)
 	{
 		this->_name = o.getName();
@@ -31,7 +33,11 @@ Character						&Character::operator=(Character const &o)
 			}
 		}
 		for (int i = 0; i < NUM_MATERIA; i++)
-			this->_m[i] = o._m[i];
+		{
+			a = o.getAMateria(i);
+			if (a)
+				this->_m[i] = a->clone();
+		}
 	}
 	return *this;
 }
@@ -51,6 +57,13 @@ Character::~Character()
 std::string const				&Character::getName() const
 {
 	return this->_name;
+}
+
+AMateria const					*Character::getAMateria(int idx) const
+{
+	if (idx >= 0 && idx < NUM_MATERIA)
+		return this->_m[idx];
+	return nullptr;
 }
 
 void							Character::equip(AMateria *m)
