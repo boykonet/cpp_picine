@@ -83,9 +83,5 @@ int 		main(void)
 
 	std::cout << alisa << std::endl;
 
-	std::cout << "\e[1;33m" << "Assignation operator" << "\e[0m" << std::endl;
-	alisa = svyatoslav;
-	std::cout << alisa << std::endl;
-
 	return 0;
 }

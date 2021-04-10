@@ -13,27 +13,29 @@ public:
 	Form(std::string const &name, int gradeForSign, int gradeForExecute);
 	virtual ~Form();
 	Form(Form const &o);
-	Form						&operator=(Form const &o);
 	std::string const			&getName() const;
-	bool const					getIndicate() const;
-	int 						getGradeForSign() const;
-	int 						getGradeForExecute() const;
+	bool 						getIndicate() const;
+	int 						getSign() const;
+	int 						getExecute() const;
 	void 						beSigned(Bureaucrat const &o);
-	class 	GradeTooLowException
+class 	GradeTooHighException : public std::exception
 	{
 	public:
-		virtual const char* what() const throw()
-		{
-			return "Grade too low exception";
-		}
+		virtual const char		*what() const throw();
+	};
+	class 	GradeTooLowException : public std::exception
+	{
+	public:
+		virtual const char		*what() const throw();
 	};
 
 private:
 	Form();
+	Form						&operator=(Form const &o);
 	std::string const			_name;
 	bool						_indicate;
-	int const 					_gradeForSign;
-	int const 					_gradeForExecute;
+	int const 					_sign;
+	int const 					_execute;
 };
 
 std::ostream 					&operator<<(std::ostream &os, Form const &o);

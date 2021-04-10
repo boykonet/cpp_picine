@@ -12,7 +12,6 @@ public:
 	Bureaucrat(std::string const &name, int grade);
 	virtual ~Bureaucrat();
 	Bureaucrat(Bureaucrat const &o);
-	Bureaucrat				&operator=(Bureaucrat const &o);
 	std::string const		&getName() const;
 	int 					getGrade() const;
 	void					increase();
@@ -20,22 +19,17 @@ public:
 	class	GradeTooHighException : public std::exception
 	{
 	public:
-		virtual const char* what() const throw()
-		{
-			return "Grade too high exception";
-		}
+		virtual const char	*what() const throw();
 	};
 	class	GradeTooLowException : public std::exception
 	{
 	public:
-		virtual const char* what() const throw()
-		{
-			return "Grade too low exception";
-		}
+		virtual const char	*what() const throw();
 	};
 
 private:
 	Bureaucrat();
+	Bureaucrat				&operator=(Bureaucrat const &o);
 	std::string const		_name;
 	int 					_grade;
 };
