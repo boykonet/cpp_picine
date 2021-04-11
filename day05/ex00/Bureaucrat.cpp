@@ -6,18 +6,11 @@ Bureaucrat::Bureaucrat() : _name("Bureaucrat"), _grade(1)
 
 Bureaucrat::Bureaucrat(std::string const &name, int grade) : _name(name)
 {
-	try
-	{
-		if (grade < GRADE_MAX)
-			throw Bureaucrat::GradeTooHighException();
-		if (grade > GRADE_MIN)
-			throw Bureaucrat::GradeTooLowException();
-		this->_grade = grade;
-	}
-	catch(std::exception &e)
-	{
-		std::cerr << "\e[1;31m" << "Error: " << e.what() << "\e[0m" << std::endl;
-	}
+	if (grade < GRADE_MAX)
+		throw Bureaucrat::GradeTooHighException();
+	if (grade > GRADE_MIN)
+		throw Bureaucrat::GradeTooLowException();
+	this->_grade = grade;
 }
 
 Bureaucrat::~Bureaucrat()
