@@ -67,17 +67,17 @@ void 						Form::beSigned(Bureaucrat const &o)
 		std::cout << "\e[1;31m" << this->_name << " was already been signed" << "\e[0m" << std::endl;
 		return ;
 	}
-	try
-	{
-		if (o.getGrade() > this->_sign && o.getGrade() > this->_execute)
-			throw Form::GradeTooLowException();
-		std::cout << "\e[1;32m" << o.getName() << " signs " << this->_name << "\e[0m" << std::endl;
-		this->_indicate = true;
-	}
-	catch(std::exception &e)
-	{
-		std::cerr << "\e[1;31m" << o.getName() << " cannot sign " << this->_name << " because " << e.what() << "\e[0m" << std::endl;
-	}
+//	try
+//	{
+	if (o.getGrade() > this->_sign)
+		throw Form::GradeTooLowException();
+	this->_indicate = true;
+	std::cout << "\e[1;32m" << o.getName() << " signs " << this->_name << "\e[0m" << std::endl;
+//	}
+//	catch(std::exception &e)
+//	{
+//		std::cerr << "\e[1;31m" << o.getName() << " cannot sign " << this->_name << " because " << e.what() << "\e[0m" << std::endl;
+//	}
 }
 
 std::ostream 				&operator<<(std::ostream &os, Form const &o)

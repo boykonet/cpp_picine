@@ -11,15 +11,17 @@ class	Bureaucrat;
 class 			Form
 {
 public:
-	Form(std::string const &name, int gradeForSign, int gradeForExecute);
+	Form(std::string const &name, int gradeForSign, int gradeForExecute, std::string const &target);
 	virtual ~Form();
 	Form(Form const &o);
-	std::string const			&getName() const;
-	bool 						getIndicate() const;
-	int 						getSign() const;
-	int 						getExecute() const;
+	virtual std::string const	&getName() const;
+	virtual bool 				getIndicate() const;
+	virtual int 				getSign() const;
+	virtual int 				getExecute() const;
+	virtual std::string const	&getTarget() const;
 	void 						beSigned(Bureaucrat const &o);
-class 	GradeTooHighException : public std::exception
+
+	class 	GradeTooHighException : public std::exception
 	{
 	public:
 		virtual const char		*what() const throw();
@@ -29,6 +31,7 @@ class 	GradeTooHighException : public std::exception
 	public:
 		virtual const char		*what() const throw();
 	};
+	virtual void				execute(Bureaucrat const &executor) const = 0;
 
 private:
 	Form();
@@ -37,6 +40,7 @@ private:
 	bool						_indicate;
 	int const 					_sign;
 	int const 					_execute;
+	std::string const			_target;
 };
 
 std::ostream 					&operator<<(std::ostream &os, Form const &o);

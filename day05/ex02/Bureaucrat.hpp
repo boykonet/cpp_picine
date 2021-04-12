@@ -29,6 +29,7 @@ public:
 		virtual const char	*what() const throw();
 	};
 	void 					signForm(Form &o) const;
+	void					executeForm(Form const &form) const;
 
 private:
 	Bureaucrat();
