@@ -41,6 +41,8 @@ private:
 	int const 					_sign;
 	int const 					_execute;
 	std::string const			_target;
+
+	Form *copyShrubberyCreationForm(const std::string &target) const;
 };
 
 std::ostream 					&operator<<(std::ostream &os, Form const &o);

@@ -73,3 +73,8 @@ void								ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	if (ofs.fail())
 		std::cerr << "Error: close file" << std::endl;
 }
+
+Form								*Form::copyShrubberyCreationForm(std::string const &target) const
+{
+	return new ShrubberyCreationForm(target);
+}

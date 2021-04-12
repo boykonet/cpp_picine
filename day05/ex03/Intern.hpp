@@ -1,11 +1,6 @@
 #ifndef INTERN_HPP
 # define INTERN_HPP
 
-//class	Form;
-//class 	ShrubberyCreationForm;
-//class 	RobotomyRequestForm;
-//class 	PresidentialPardonForm;
-
 # include <iostream>
 # include <string>
 # include "Form.hpp"

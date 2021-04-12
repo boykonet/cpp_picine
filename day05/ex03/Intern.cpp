@@ -1,5 +1,11 @@
 #include "Intern.hpp"
 
+//typedef struct			s_form
+//{
+//	std::string const	name;
+//	Form				(*f)(std::string);
+//}						t_form;
+
 Intern::Intern()
 {
 }
@@ -21,24 +27,16 @@ Intern						&Intern::operator=(Intern const &o)
 
 Form						*Intern::makeForm(std::string const &name, std::string const &target) const
 {
-	Form					*form = NULL;
-	int 					flag;
+	std::string 			names[3] = { "shrubbery creation", "robotomy request", "presidential pardon" };
+	Form					*(*f)[3](std::string) = { ShrubberyCreationForm, RobotomyRequestForm, PresidentialPardonForm };
 
-	flag = 0;
-	flag = (name == "shrubbery creation") : 1 ? flag;
-	flag = (name == "robotomy request") : 2 ? flag;
-	flag = (name == "presidential pardon") : 3 ? flag;
-	if (flag == 0)
+	for (int i = 0; i < 3; i++)
 	{
-		std::cout << "Error: " << name << " doesn't find =(" << std::endl;
-		return NULL;
+		if (name == names[i])
+		{
+			std::cout << "\e[1;32m" << "Intern created " << name << "\e[0m" << std::endl;]
+			return new (*f)[i](target);
+		}
 	}
-	if (flag == 1)
-		form = new ShrubberyCreationForm(target);
-	if (flag == 2)
-		form = new RobotomyRequestForm(target);
-	if (flag == 3)
-		form = new PresidentialPardonForm(target);
-	std::cout << "Intern creates " << << std::endl;
-	return form;
+	return NULL;
 }

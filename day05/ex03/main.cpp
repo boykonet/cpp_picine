@@ -9,6 +9,10 @@ int			main()
 	Form				*form;
 
 	form = maya.makeForm("SomeRandomForm", "me");
+	if (form == NULL)
+		form = maya.makeForm("presidential pardon", "me");
+
+	std::cout << *form;
 
 	delete form;
 	return 0;
