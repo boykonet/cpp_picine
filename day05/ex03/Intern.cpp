@@ -1,11 +1,5 @@
 #include "Intern.hpp"
 
-//typedef struct			s_form
-//{
-//	std::string const	name;
-//	Form				(*f)(std::string);
-//}						t_form;
-
 Intern::Intern()
 {
 }
@@ -13,6 +7,22 @@ Intern::Intern()
 Intern::~Intern()
 {
 }
+
+Form						*Intern::createNewShrubberyCreationForm(std::string const &target)
+{
+	return new ShrubberyCreationForm(target);
+}
+
+Form						*Intern::createNewRobotomyRequestForm(std::string const &target)
+{
+	return new RobotomyRequestForm(target);
+}
+
+Form						*Intern::createNewPresidentialPardonForm(std::string const &target)
+{
+	return new PresidentialPardonForm(target);
+}
+
 
 Intern::Intern(Intern const &o)
 {
@@ -27,15 +37,15 @@ Intern						&Intern::operator=(Intern const &o)
 
 Form						*Intern::makeForm(std::string const &name, std::string const &target) const
 {
-	std::string 			names[3] = { "shrubbery creation", "robotomy request", "presidential pardon" };
-	Form					*(*f)[3](std::string) = { ShrubberyCreationForm, RobotomyRequestForm, PresidentialPardonForm };
+	std::string		names[3] = { "shrubbery creation", "robotomy request", "presidential pardon" };
+	void			(Intern::*forms[3])(std::string const&) = { &Intern::createNewShrubberyCreationForm, &Intern::createNewRobotomyRequestForm, &Intern::createNewPresidentialPardonForm };
 
 	for (int i = 0; i < 3; i++)
 	{
 		if (name == names[i])
 		{
-			std::cout << "\e[1;32m" << "Intern created " << name << "\e[0m" << std::endl;]
-			return new (*f)[i](target);
+			std::cout << "\e[1;32m" << "Intern created " << name << "\e[0m" << std::endl;
+			return forms[i](target);
 		}
 	}
 	return NULL;
