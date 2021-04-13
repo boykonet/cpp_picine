@@ -35,6 +35,32 @@ int			main()
 	std::cout << std::endl;
 
 
+	std::cout << "\e[1;33m" << "Create form1.1 with grade for sign == 1 and grade for execute == 151" << "\e[0m" << std::endl;
+	try
+	{
+		Form				*form11 = new Form("Form1.1", 1, 151);
+		std::cout << *form11;
+	}
+	catch(std::exception &e)
+	{
+		std::cerr << "\e[1;31m" << "Error: " << e.what() << "\e[0m" << std::endl;
+	}
+	std::cout << std::endl;
+
+
+	std::cout << "\e[1;33m" << "Create form2.1 with grade for sign == 151 and grade for execute == 1" << "\e[0m" << std::endl;
+	try
+	{
+		Form				*form22 = new Form("Form2.1", 151, 1);
+		std::cout << *form22;
+	}
+	catch(std::exception &e)
+	{
+		std::cerr << "\e[1;31m" << "Error: " << e.what() << "\e[0m" << std::endl;
+	}
+	std::cout << std::endl;
+
+
 	std::cout << "\e[1;33m" << "Create form3 with grade for sign == 1 and grade for execute == 150 and \n"
 							"form4 with grade for sign == 150 and grade for execute == 1" << "\e[0m" << std::endl;
 	try

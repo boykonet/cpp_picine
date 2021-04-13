@@ -28,11 +28,13 @@ int			main()
 	andrey.executeForm(*form3);
 	std::cout << std::endl;
 
+
 	std::cout << "\e[1;33m" << "Andrey signs forms:" << "\e[0m" << std::endl;
 	andrey.signForm(*form1);
 	andrey.signForm(*form2);
 	andrey.signForm(*form3);
 	std::cout << std::endl;
+
 
 	std::cout << "\e[1;33m" << "Forms:" << "\e[0m" << std::endl;
 	std::cout << *form1 << *form2 << *form3;
@@ -48,10 +50,10 @@ int			main()
 	valera.executeForm(*form1);
 	valera.executeForm(*form2);
 	valera.executeForm(*form3);
-	std::cout << std::endl;
 
 	delete form1;
 	delete form2;
 	delete form3;
+
 	return 0;
 }

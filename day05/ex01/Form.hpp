@@ -15,16 +15,21 @@ public:
 	virtual ~Form();
 	Form(Form const &o);
 	std::string const			&getName() const;
-	bool 						getIndicate() const;
-	int 						getSign() const;
-	int 						getExecute() const;
-	void 						beSigned(Bureaucrat const &o);
+	bool						getIndicate() const;
+	int							getSign() const;
+	int							getExecute() const;
+	void						beSigned(Bureaucrat const &o);
 class 	GradeTooHighException : public std::exception
 	{
 	public:
 		virtual const char		*what() const throw();
 	};
 	class 	GradeTooLowException : public std::exception
+	{
+	public:
+		virtual const char		*what() const throw();
+	};
+	class 	FormAlreadySigned : public std::exception
 	{
 	public:
 		virtual const char		*what() const throw();

@@ -1,12 +1,12 @@
 #include "Form.hpp"
 
 Form::Form() : _name("Bureaucrat"), \
-_indicate(false), _sign(10), _execute(10), _target("my")
+_indicate(false), _sign(10), _execute(10)
 {
 }
 
-Form::Form(std::string const &name, int sign, int execute, std::string const &target) : _name(name), \
-_indicate(false), _sign(sign), _execute(execute), _target(target)
+Form::Form(std::string const &name, int sign, int execute) : _name(name), \
+_indicate(false), _sign(sign), _execute(execute)
 {
 	if (this->_sign < GRADE_MAX || this->_execute < GRADE_MAX)
 		throw Form::GradeTooHighException();
@@ -19,7 +19,7 @@ Form::~Form()
 }
 
 Form::Form(Form const &o) : _name(o.getName()), _indicate(o.getIndicate()), \
-_sign(o.getSign()), _execute(o.getExecute()), _target(o.getTarget())
+_sign(o.getSign()), _execute(o.getExecute())
 {
 	*this = o;
 }
@@ -32,12 +32,17 @@ Form						&Form::operator=(Form const &o)
 
 const char					*Form::GradeTooHighException::what() const throw()
 {
-	return "Grade too high exception";
+	return "grade too high exception";
 }
 
 const char					*Form::GradeTooLowException::what() const throw()
 {
-	return "Grade too low exception";
+	return "grade too low exception";
+}
+
+const char					*Form::FormAlreadySigned::what() const throw()
+{
+	return "form already been signed";
 }
 
 std::string const			&Form::getName() const
@@ -63,33 +68,17 @@ int 						Form::getExecute() const
 void 						Form::beSigned(Bureaucrat const &o)
 {
 	if (this->_indicate)
-	{
-		std::cout << "\e[1;31m" << this->_name << " was already been signed" << "\e[0m" << std::endl;
-		return ;
-	}
-//	try
-//	{
+		throw Form::FormAlreadySigned();
 	if (o.getGrade() > this->_sign)
 		throw Form::GradeTooLowException();
 	this->_indicate = true;
-	std::cout << "\e[1;32m" << o.getName() << " signs " << this->_name << "\e[0m" << std::endl;
-//	}
-//	catch(std::exception &e)
-//	{
-//		std::cerr << "\e[1;31m" << o.getName() << " cannot sign " << this->_name << " because " << e.what() << "\e[0m" << std::endl;
-//	}
 }
 
 std::ostream 				&operator<<(std::ostream &os, Form const &o)
 {
-	os << "\e[1;34m" << o.getName() << " has " << o.getIndicate() \
+	os << "\e[1;34m" << o.getName() << " form has " << o.getIndicate() \
 	<< " - indicator whether it is signed, " << o.getSign() \
 	<< " - a grade required to sign it and " << o.getExecute() \
 	<< " - a grade required to execute it." << "\e[0m" << std::endl;
 	return (os);
-}
-
-std::string const			&Form::getTarget() const
-{
-	return this->_target;
 }

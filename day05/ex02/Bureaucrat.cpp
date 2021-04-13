@@ -30,12 +30,12 @@ Bureaucrat					&Bureaucrat::operator=(Bureaucrat const &o)
 
 const char					*Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return "Grade too high exception";
+	return "grade too high exception";
 }
 
 const char					*Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return "Grade too low exception";
+	return "grade too low exception";
 }
 
 std::string const			&Bureaucrat::getName() const
@@ -87,10 +87,11 @@ void 						Bureaucrat::signForm(Form &o) const
 	try
 	{
 		o.beSigned(*this);
+		std::cout << "\e[1;32m" << this->_name << " signs " << o.getName() << " form\e[0m" << std::endl;
 	}
 	catch(std::exception &e)
 	{
-		std::cerr << "\e[1;31m" << this->_name << " cannot sign " << o.getName() << " because " << e.what() << "\e[0m" << std::endl;
+		std::cerr << "\e[1;31m" << this->_name << " cannot sign " << o.getName() << " form because " << e.what() << "\e[0m" << std::endl;
 	}
 }
 
@@ -99,9 +100,10 @@ void						Bureaucrat::executeForm(Form const &form) const
 	try
 	{
 		form.execute(*this);
+		std::cout << "\e[1;32m" << this->_name << " execute " << form.getName() << " form\e[0m" << std::endl;
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << "\e[1;31m" << this->_name << " cannot sign " << form.getName() << " because " << e.what() << "\e[0m" << std::endl;
+		std::cerr << "\e[1;31m" << this->_name << " cannot sign " << form.getName() << " form because " << e.what() << "\e[0m" << std::endl;
 	}
 }

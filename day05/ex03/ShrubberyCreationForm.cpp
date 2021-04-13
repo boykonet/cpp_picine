@@ -1,10 +1,12 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : Form("shrubbery creation", 145, 137, "my")
+ShrubberyCreationForm::ShrubberyCreationForm() : Form("shrubbery creation", 145, 137), \
+_target("me")
 {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target) : Form("shrubbery creation", 145, 137, target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target) : Form("shrubbery creation", 145, 137), \
+_target(target)
 {
 }
 
@@ -23,6 +25,21 @@ ShrubberyCreationForm				&ShrubberyCreationForm::operator=(const ShrubberyCreati
 	return *this;
 }
 
+std::string const					&ShrubberyCreationForm::getTarget() const
+{
+	return this->_target;
+}
+
+const char							*ShrubberyCreationForm::ErrOpenCloseFile::what() const throw()
+{
+	return "Error: open / close file";
+}
+
+const char							*ShrubberyCreationForm::FormNotBeenSigned::what() const throw()
+{
+	return "form has not been signed yet =(";
+}
+
 void								ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	int					k;
@@ -30,15 +47,12 @@ void								ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	std::ofstream		ofs;
 
 	if (!this->getIndicate())
-	{
-		std::cout << "\e[1;31m" << "The " << this->getName() << " has not been signed yet =(" << "\e[0m" << std::endl;
-		return ;
-	}
+		throw ShrubberyCreationForm::FormNotBeenSigned();
 	if (executor.getGrade() > this->getExecute())
 		throw Form::GradeTooLowException();
 	ofs.open(this->getTarget() + "_shrubbery");
 	if (ofs.fail())
-		std::cerr << "Error: open file" << std::endl;
+		throw ShrubberyCreationForm::ErrOpenCloseFile();
 	for (int i = 0; i < 17; i++)
 	{
 		if (i == 0)
@@ -71,10 +85,5 @@ void								ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	}
 	ofs.close();
 	if (ofs.fail())
-		std::cerr << "Error: close file" << std::endl;
-}
-
-Form								*Form::copyShrubberyCreationForm(std::string const &target) const
-{
-	return new ShrubberyCreationForm(target);
+		throw ShrubberyCreationForm::ErrOpenCloseFile();
 }

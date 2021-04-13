@@ -38,16 +38,6 @@ int 		main(void)
 	std::cout << valera;
 	valera.decrease();
 	std::cout << valera;
-//	try
-//	{
-//		std::cout << valera;
-//		valera.decrease();
-//		std::cout << valera;
-//	}
-//	catch(std::exception &e)
-//	{
-//		std::cerr << "\e[1;31m" << "Error: " << e.what() << "\e[0m" << std::endl;
-//	}
 	std::cout << std::endl;
 
 
@@ -55,45 +45,24 @@ int 		main(void)
 	std::cout << svyatoslav;
 	svyatoslav.increase();
 	std::cout << svyatoslav;
-//	try
-//	{
-//		std::cout << svyatoslav;
-//		svyatoslav.increase();
-//		std::cout << svyatoslav;
-//	}
-//	catch(std::exception &e)
-//	{
-//		std::cerr << "\e[1;31m" << "Error: " << e.what() << "\e[0m" << std::endl;
-//	}
 	std::cout << std::endl;
 
 
 	std::cout << "\e[1;33m" << "Creating an object (grade == 10) and use increase() and decrease() methods" << "\e[0m" << std::endl;
 	Bureaucrat			bureaucrat = Bureaucrat("Bureaucrat", 10);
 	std::cout << bureaucrat;
+	std::cout << "\e[1;33m" << "Increment" << "\e[0m" << std::endl;
 	bureaucrat.increase();
 	std::cout << bureaucrat;
+	std::cout << "\e[1;33m" << "Decrement" << "\e[0m" << std::endl;
 	bureaucrat.decrease();
 	std::cout << bureaucrat;
-//	try
-//	{
-//		Bureaucrat			bureaucrat = Bureaucrat("Bureaucrat", 10);
-//		std::cout << bureaucrat;
-//		bureaucrat.increase();
-//		std::cout << bureaucrat;
-//		bureaucrat.decrease();
-//		std::cout << bureaucrat;
-//	}
-//	catch(std::exception &e)
-//	{
-//		std::cerr << "\e[1;31m" << "Error: " << e.what() << "\e[0m" << std::endl;
-//	}
 	std::cout << std::endl;
 
 	std::cout << "\e[1;33m" << "Copy constructor" << "\e[0m" << std::endl;
 	Bureaucrat				alisa(valera);
 
-	std::cout << alisa << std::endl;
+	std::cout << alisa;
 
 	return 0;
 }

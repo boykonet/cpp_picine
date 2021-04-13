@@ -30,12 +30,12 @@ Bureaucrat					&Bureaucrat::operator=(Bureaucrat const &o)
 
 const char					*Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return "Grade too high exception";
+	return "grade too high exception";
 }
 
 const char					*Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return "Grade too low exception";
+	return "grade too low exception";
 }
 
 std::string const			&Bureaucrat::getName() const
@@ -78,6 +78,6 @@ void 						Bureaucrat::decrease()
 
 std::ostream 				&operator<<(std::ostream &os, Bureaucrat const &o)
 {
-	os << o.getName() << ", bureaucrat grade " << o.getGrade() << std::endl;
+	os << "\e[1;37m" << o.getName() << ", bureaucrat grade " << o.getGrade() << "\e[0m" << std::endl;
 	return (os);
 }

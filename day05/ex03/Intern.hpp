@@ -10,8 +10,6 @@
 
 class 			Intern
 {
-private:
-	void						*forms[3];
 public:
 	Intern();
 	~Intern();
@@ -21,6 +19,12 @@ public:
 	Form						*createNewRobotomyRequestForm(std::string const &target);
 	Form						*createNewPresidentialPardonForm(std::string const &target);
 	Form						*makeForm(std::string const &name, std::string const &target) const;
+	class 	CannotFindForm : public std::exception
+	{
+	public:
+		virtual const char 		*what() const throw();
+	};
+	typedef Form				*(Intern::*TFormFuncPtr)(std::string const&);
 };
 
 #endif
