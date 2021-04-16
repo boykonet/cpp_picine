@@ -1,18 +1,17 @@
-#include <iostream>
-#include <string>
 #include "Data.hpp"
-
-void		*serialize(void);
-Data		*deserialize(void *raw);
 
 int			main(void)
 {
 	void 	*ptr;
-	Data	*dptr;
+	Data	*data;
 
+	std::srand(std::time(NULL));
 	ptr = serialize();
-	dptr = deserialize(ptr);
-	std::cout << "string1 = " << dptr->getStr1() << ", number = "
-	<< dptr->getInt() << ", string2 = " << dptr->getStr2() << std::endl;
+	data = deserialize(ptr);
+	std::cout << "sizeof(data) = " << sizeof(*data)
+	<< ", string1 = " << data->s1
+	<< ", number = " << data->num
+	<< ", string2 = " << data->s2 << std::endl;
+	delete data;
 	return (0);
 }

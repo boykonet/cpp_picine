@@ -1,9 +1,5 @@
-#include <iostream>
 #include <string>
-#include "Base.hpp"
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
+#include "Classes.hpp"
 
 typedef Base	*(*FuncPtr)();
 
@@ -26,5 +22,5 @@ Base			*generate(void)
 {
 	FuncPtr		ptr[3] = { &newA, &newB, &newC };
 
-	return dynamic_cast<Base*>((*ptr[std::rand()%3])());
+	return ((*ptr[std::rand()%3])());
 }

@@ -1,23 +1,18 @@
-#include <iostream>
-#include <string>
-#include <string.h>
+#include "Data.hpp"
 
 void		*serialize(void)
 {
-	std::string 	s1 = "hello";
-	int				n = 4;
-	std::string 	s2 = "world";
-	char 			a[sizeof(std::string) * 2 + sizeof(int)];
 	void 			*ptr;
+	Data			*data = new Data;
+	std::string 	random1[10] = { "Alisa", "Masha", "Katya", "Oleg", "Gleb",
+							  "Rafael", "Dranik", "Smetanka", "Alesha", "Kuznechik" };
+	std::string 	random2[10] = { "goes to school", "is reading a book", "talks to her sister",
+							  "draws", "is programming", "smiles", "is cooking", "sings",
+														 "is dancing", "is sick" };
 
-	memset(a, 0, sizeof(std::string) * 2 + sizeof(int));
-	ptr = &s1;
-	memcpy(&a[0], ptr, sizeof(std::string) - 1);
-	ptr = &n;
-	memcpy(&a[sizeof(std::string)], ptr, sizeof(int));
-	ptr = &s2;
-	memcpy(&a[sizeof(std::string) + sizeof(int)], ptr, sizeof(std::string));
-	ptr = &a;
-	std::cout << a << std::endl;
+	data->s1 = random1[std::rand()%10];
+	data->num = std::rand()%10;
+	data->s2 = random2[std::rand()%10];
+	ptr = reinterpret_cast<void*>(data);
 	return ptr;
 }

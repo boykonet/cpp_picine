@@ -2,17 +2,7 @@
 #include <string>
 #include <exception>
 #include "Scalar.hpp"
-
-class				ErrorNum : public std::exception
-{
-public:
-	virtual const char		*what() const throw();
-};
-
-const char			*ErrorNum::what() const throw()
-{
-	return "impossible";
-}
+#include <cfloat>
 
 int			main(int argc, char **argv)
 {
@@ -26,7 +16,7 @@ int			main(int argc, char **argv)
 		{
 			num = strtod(argv[1], &ptrEnd);
 			if (*ptrEnd && (*ptrEnd != 'f' || (*ptrEnd == 'f' && *(ptrEnd + 1) != '\0')))
-				throw ErrorNum();
+				throw Impossible();
 			scalar.setDNum(num);
 			scalar.exceptionHandler("char");
 			scalar.exceptionHandler("int");
