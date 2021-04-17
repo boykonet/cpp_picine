@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
 #include <exception>
-#include "Scalar.hpp"
+#include "Convert.hpp"
 
 int			main(int argc, char **argv)
 {
-	Scalar		scalar;
+	Convert		scalar;
 	char 		*ptrEnd;
 	double 		num;
 

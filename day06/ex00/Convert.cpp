@@ -1,36 +1,36 @@
-#include "Scalar.hpp"
+#include "Convert.hpp"
 
-Scalar::Scalar() : _dnum(0)
+Convert::Convert() : _dnum(0)
 {
 }
 
-Scalar::~Scalar()
+Convert::~Convert()
 {
 }
 
-Scalar::Scalar(Scalar const &o) : _dnum(o.getDNum())
+Convert::Convert(Convert const &o) : _dnum(o.getDNum())
 {
 	*this = o;
 }
 
-Scalar			&Scalar::operator=(Scalar const &o)
+Convert			&Convert::operator=(Convert const &o)
 {
 	if (this != &o)
 		this->_dnum = o.getDNum();
 	return *this;
 }
 
-void 			Scalar::setDNum(double num)
+void 			Convert::setDNum(double num)
 {
 	this->_dnum = num;
 }
 
-long double		Scalar::getDNum() const
+long double		Convert::getDNum() const
 {
 	return this->_dnum;
 }
 
-void 			Scalar::convertPrintChar() const
+void 			Convert::convertPrintChar() const
 {
 	std::cout << "char: ";
 	if (!isascii(static_cast<int>(this->_dnum)))
@@ -41,7 +41,7 @@ void 			Scalar::convertPrintChar() const
 	std::cout << std::endl;
 }
 
-void 			Scalar::convertPrintInt() const
+void 			Convert::convertPrintInt() const
 {
 	std::cout << "int: ";
 	if ((this->_dnum > std::numeric_limits<int>::max() ||
@@ -52,7 +52,7 @@ void 			Scalar::convertPrintInt() const
 	std::cout << std::endl;
 }
 
-void 			Scalar::convertPrintFloat() const
+void 			Convert::convertPrintFloat() const
 {
 	std::cout << "float: ";
 	if ((fabs(this->_dnum - std::numeric_limits<float>::min()) < 1e-14
@@ -68,7 +68,7 @@ void 			Scalar::convertPrintFloat() const
 	std::cout << std::endl;
 }
 
-void 			Scalar::convertPrintDouble() const
+void 			Convert::convertPrintDouble() const
 {
 	std::cout << "double: ";
 	if ((fabs(this->_dnum - std::numeric_limits<double>::min()) < 1e-14
@@ -82,11 +82,11 @@ void 			Scalar::convertPrintDouble() const
 	std::cout << std::endl;
 }
 
-void 			Scalar::exceptionHandler(std::string const &name) const
+void 			Convert::exceptionHandler(std::string const &name) const
 {
 	std::string 		params[4] = { "char", "int", "float", "double" };
-	Scalar::FuncPtr		func[4] = { &Scalar::convertPrintChar, &Scalar::convertPrintInt,
-							  &Scalar::convertPrintFloat, &Scalar::convertPrintDouble };
+	Convert::FuncPtr		func[4] = { &Convert::convertPrintChar, &Convert::convertPrintInt,
+							  &Convert::convertPrintFloat, &Convert::convertPrintDouble };
 
 	for (int i = 0; i < 4; i++)
 	{
