@@ -2,7 +2,6 @@
 #include <string>
 #include <exception>
 #include "Scalar.hpp"
-#include <cfloat>
 
 int			main(int argc, char **argv)
 {
@@ -15,7 +14,13 @@ int			main(int argc, char **argv)
 		if (argc == 2)
 		{
 			num = strtod(argv[1], &ptrEnd);
-			if (*ptrEnd && (*ptrEnd != 'f' || (*ptrEnd == 'f' && *(ptrEnd + 1) != '\0')))
+			if (&ptrEnd[0] == &argv[1][0]
+			&& static_cast<std::string>(argv[1]).length() == 1)
+				num = *ptrEnd;
+			if ((isprint(*ptrEnd) && static_cast<std::string>(argv[1]).length() != 1)
+			&& !(&ptrEnd[0] != &argv[1][0]
+			&& *ptrEnd == 'f'
+			&& static_cast<std::string>(ptrEnd).length() == 1))
 				throw Impossible();
 			scalar.setDNum(num);
 			scalar.exceptionHandler("char");

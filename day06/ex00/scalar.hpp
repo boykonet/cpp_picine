@@ -6,6 +6,7 @@
 # include <exception>
 # include <cmath>
 # include <limits>
+# include <iomanip>
 
 class		Scalar
 {

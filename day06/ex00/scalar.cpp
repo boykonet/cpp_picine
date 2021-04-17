@@ -60,16 +60,12 @@ void 			Scalar::convertPrintFloat() const
 	&& (isnan(static_cast<float>(this->_dnum))
 	&& isinf(static_cast<float>(this->_dnum))))
 		throw Impossible();
-	std::cout << static_cast<float>(this->_dnum);
-	if ((this->_dnum - floorf(static_cast<float>(this->_dnum)) < 1e-14)
-	&& (!isinf(static_cast<float>(this->_dnum))
-	&& !isnan(static_cast<float>(this->_dnum)))
-	&& std::to_string(static_cast<float>(this->_dnum)).length() - 7 < 7)
-		std::cout << ".0";
+	if (fabs(this->_dnum - floorf(static_cast<float>(this->_dnum))) < 1e-14)
+		std::cout << std::fixed << std::setprecision(1) << static_cast<float>(this->_dnum);
+	else
+		std::cout << std::setprecision(6) << static_cast<float>(this->_dnum);
 	std::cout << "f";
 	std::cout << std::endl;
-//	std::cout << std::to_string(this->_dnum) << "   " << std::to_string(this->_dnum).length();
-//	std::cout << std::endl;
 }
 
 void 			Scalar::convertPrintDouble() const
@@ -79,14 +75,10 @@ void 			Scalar::convertPrintDouble() const
 	|| fabs(this->_dnum - std::numeric_limits<double>::max()) < 1e-14)
 	&& (isnan(this->_dnum) || isinf(this->_dnum)))
 		throw Impossible();
-	std::cout << static_cast<double>(this->_dnum);
-//	std::cout << std::endl;
-//	std::cout << (this->_dnum - floor(static_cast<double>(this->_dnum)));
-//	std::cout << std::endl;
-	if ((this->_dnum - floor(static_cast<double>(this->_dnum)) < 1e-14)
-	&& (!isinf(this->_dnum) && !isnan(this->_dnum))
-	&& std::to_string(static_cast<double>(this->_dnum)).length() - 7 < 7)
-		std::cout << ".0";
+	if (fabs(this->_dnum - floor(static_cast<double>(this->_dnum))) < 1e-7)
+		std::cout << std::fixed << std::setprecision(1) << static_cast<double>(this->_dnum);
+	else
+		std::cout << std::setprecision(6) << static_cast<double>(this->_dnum);
 	std::cout << std::endl;
 }
 
