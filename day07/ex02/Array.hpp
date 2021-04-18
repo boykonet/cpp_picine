@@ -29,9 +29,9 @@ public:
 };
 
 template <typename T>
-Array<T>::Array() : _n(1), _array(new T [_n])
+Array<T>::Array() : _n(10), _array(new T [_n])
 {
-	for (int i = 0; i < this->_n; i++)
+	for (unsigned int i = 0; i < this->_n; i++)
 		this->_array[i] = 0;
 }
 
@@ -50,7 +50,7 @@ Array<T>::~Array()
 }
 
 template <typename T>
-Array<T>::Array(Array<T> const &o)
+Array<T>::Array(Array<T> const &o) : _n(0), _array(NULL)
 {
 	*this = o;
 }
