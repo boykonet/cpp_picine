@@ -1,4 +1,4 @@
-NAME = iter
+NAME = array
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -6,7 +6,7 @@ SRCS =			./main.cpp
 
 OBJS = $(SRCS:%.cpp=%.o)
 
-HEADERS =		./iter.hpp
+HEADERS =		./Array.hpp
 
 INCLUDE = ./
 
@@ -18,7 +18,7 @@ $(NAME): $(OBJS)
 	$(CC) $(FLAGS) -I $(INCLUDE) $^ -o $@
 
 %.o: %.cpp $(HEADERS)
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -I $(INCLUDE) -c $< -o $@
 
 clean:
 	rm -rf $(OBJS)
