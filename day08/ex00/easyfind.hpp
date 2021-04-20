@@ -20,16 +20,27 @@ const char 				*NotFound::what() const throw()
 }
 
 template <typename T>
-void 						easyfind(T &vector, int num)
+typename T::iterator 			easyfind(T &vector, int num)
 {
-	typename T::iterator	it;
+	typename T::iterator		it;
 
 	it = find(vector.begin(), vector.end(), num);
 
 	if (*it != num)
 		throw NotFound();
-	std::cout << "Number " << *it << " is found!" << std::endl;
+	return it;
 }
 
+template <typename T>
+typename T::const_iterator 		easyfind(T const &vector, int num)
+{
+	typename T::const_iterator	it;
+
+	it = find(vector.begin(), vector.end(), num);
+
+	if (*it != num)
+		throw NotFound();
+	return it;
+}
 
 #endif

@@ -54,7 +54,7 @@ int 		main()
 	std::cout << "Find number " << num << " in vector<int>" << std::endl;
 	try
 	{
-		easyfind(vector, num);
+		std::cout << *easyfind(vector, num) << std::endl;
 	}
 	catch(std::exception &e)
 	{
