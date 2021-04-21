@@ -97,7 +97,7 @@ void 		my()
 	vector.push_back(5);
 	vector.push_back(10);
 	vector.push_back(77);
-	vector.push_back(68);
+//	vector.push_back(68);
 //	vector.push_back(99);
 
 	// Add 2 elements in span
@@ -108,7 +108,7 @@ void 		my()
 	itb = vector.begin();
 	ite = vector.end();
 
-	std::cout << "Add 6 elements to span:" << std::endl;
+	std::cout << "Add 3 elements to span:" << std::endl;
 	try
 	{
 		span.generate(itb, ite);

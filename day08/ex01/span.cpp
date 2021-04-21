@@ -33,7 +33,10 @@ Span					&Span::operator=(Span const &o)
 
 void 					Span::addNumber(int n)
 {
-	if (std::distance(this->_arr.begin(), this->_it) >= this->_arr.capacity())
+	unsigned long		distance = std::distance(this->_arr.begin(), this->_it);
+	unsigned long		capacity = this->_arr.capacity();
+
+	if (distance >= capacity)
 		throw Span::ErrAddNum();
 	this->_arr.at(std::distance(this->_arr.begin(), this->_it)) = n;
 	this->_it++;
@@ -63,15 +66,13 @@ int 					Span::longestSpan() const
 
 void 					Span::generate(std::vector<int>::iterator itb, std::vector<int>::iterator ite)
 {
-	int 				count = std::distance(itb, ite);
+	unsigned long 		distance = std::distance(itb, ite);
+	unsigned long		capacity = this->_arr.capacity();
 
-	std::cout << "size = " << this->_it - this->_arr.begin() << std::endl;
-	std::cout << "distance = " << count << std::endl;
-	std::cout << "capacity = " << this->_arr.capacity() << std::endl;
-	if (count + this->_it - this->_arr.begin() > this->_arr.capacity())
+	if (distance + static_cast<unsigned long>(this->_it - this->_arr.begin()) > capacity)
 		throw Span::ErrAddNum();
 
-	for (int i = 0; i < count; i++)
+	for (unsigned long i = 0; i < distance; i++)
 	{
 		this->_arr.at(*this->_it + i) = *itb;
 		++itb;

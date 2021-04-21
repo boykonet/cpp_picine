@@ -24,9 +24,6 @@ int 		main()
 
 	size = std::rand()%100;
 	num = std::rand()%100;
-	std::cout << "vector size to be specifier = " << size << std::endl;
-	vector.reserve(size);
-	std::cout << "Real size vector = " << vector.capacity() << std::endl;
 	std::cout << "Add elements of the vector:" << std::endl;
 	for (int i = 0; i < size; i++)
 	{
@@ -51,10 +48,15 @@ int 		main()
 			std::cout << std::endl;
 	}
 	std::cout << std::endl;
+	
 	std::cout << "Find number " << num << " in vector<int>" << std::endl;
+	
+	std::vector<int>::iterator		it;
+	
 	try
 	{
-		std::cout << *easyfind(vector, num) << std::endl;
+		it = easyfind(vector, num);
+		std::cout << *it << std::endl;
 	}
 	catch(std::exception &e)
 	{

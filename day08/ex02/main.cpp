@@ -96,6 +96,7 @@ void 				my()
 		std::cout << *it << " ";
 		++it;
 	}
+	std::cout << std::endl;
 }
 
 int			main()

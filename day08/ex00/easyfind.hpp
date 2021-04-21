@@ -24,9 +24,9 @@ typename T::iterator 			easyfind(T &vector, int num)
 {
 	typename T::iterator		it;
 
-	it = find(vector.begin(), vector.end(), num);
+	it = std::find(vector.begin(), vector.end(), num);
 
-	if (*it != num)
+	if (it == vector.end())
 		throw NotFound();
 	return it;
 }
@@ -36,9 +36,9 @@ typename T::const_iterator 		easyfind(T const &vector, int num)
 {
 	typename T::const_iterator	it;
 
-	it = find(vector.begin(), vector.end(), num);
+	it = std::find(vector.begin(), vector.end(), num);
 
-	if (*it != num)
+	if (it == vector.end())
 		throw NotFound();
 	return it;
 }
